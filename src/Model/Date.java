@@ -1,10 +1,3 @@
-/**
- * @auteur: Thomas LACAZE
- * @version: 1.20
- * @param  parJour, parMois, parAnnee
- * @return une date
- */
-
 package Model;
 
 import java.io.Serializable;
