@@ -1,6 +1,7 @@
 package Vue;
 
 import java.awt.Component;
+import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
@@ -15,13 +16,11 @@ public class CelluleRenderer extends DefaultTableCellRenderer {
 
         if (value instanceof Evenement) {
             Evenement testEvt = (Evenement) value;
-            setIcon(new ImageIcon("images/" + testEvt.getPath()));
+            setIcon(new ImageIcon(new ImageIcon("images/" + testEvt.getPath()).getImage().getScaledInstance(70, 50,
+                    Image.SCALE_DEFAULT)));
         } else {
             setIcon(new ImageIcon("dffd"));
         }
-        // setBackground(new java.awt.Color(255,012,120));
-        // System.out.print(testEvt.getNom().equals(null));
-        // setIcon(new ImageIcon("images/"+testEvt.getPath()));
 
         return cell;
     }

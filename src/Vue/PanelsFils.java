@@ -17,40 +17,33 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
     CardLayout gestionnaireDesCartes = new CardLayout();
 
     public PanelsFils() {
-    	setLayout(gestionnaireDesCartes);
-    	
-        
+        setLayout(gestionnaireDesCartes);
+
         PanelCreation panelCreation = new PanelCreation();
-    	
-    	
-    	
-    	File ser = new File("save" + File.separator + "chronologie.ser");
+
+        File ser = new File("save" + File.separator + "chronologie.ser");
 
         Chronologie chronologie;
         if (ser.length() == 0) {
-        	
-        	
-        	add(panelCreation, "Creation");
-        	gestionnaireDesCartes.show(this, "Creation");        	
-        	chronologie = new Chronologie();
-        	//PanelCreationdelaChronologie
-        	
-        }
-        else
-        	chronologie = (Chronologie) LectureEcriture.lecture(ser);
+
+            add(panelCreation, "Creation");
+            gestionnaireDesCartes.show(this, "Creation");
+            chronologie = new Chronologie();
+            // PanelCreationdelaChronologie
+
+        } else
+            chronologie = (Chronologie) LectureEcriture.lecture(ser);
 
         PanelChronoDiapo panelChronoDiapo = new PanelChronoDiapo(chronologie);
         PanelFormulaire panelFormulaire = new PanelFormulaire(chronologie);
 
-        
         add(panelFormulaire, NOMMENU[0]);
         add(panelChronoDiapo, NOMMENU[1]);
-        
-        panelChronoDiapo.chpanelDiapo.chNomJLabel.setText("<html><center>"+chronologie.chNom+"</center></html>");
-        
-        
-        
-        new Controler(panelChronoDiapo,panelFormulaire, ser, chronologie, panelCreation, panelChronoDiapo.chpanelDiapo,panelChronoDiapo.chpanelChrono);
+
+        panelChronoDiapo.chpanelDiapo.chNomJLabel.setText("<html><center>" + chronologie.chNom + "</center></html>");
+
+        new Controler(panelChronoDiapo, panelFormulaire, ser, chronologie, panelCreation, panelChronoDiapo.chpanelDiapo,
+                panelChronoDiapo.chpanelChrono);
 
     }
 
@@ -60,11 +53,11 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
             System.exit(0);
         }
 
-        if(parEvt.getActionCommand() == NOMMENU[0]){
+        if (parEvt.getActionCommand() == NOMMENU[0]) {
             gestionnaireDesCartes.show(this, NOMMENU[0]);
         }
 
-        if(parEvt.getActionCommand() == NOMMENU[1]){
+        if (parEvt.getActionCommand() == NOMMENU[1]) {
             gestionnaireDesCartes.show(this, NOMMENU[1]);
         }
     }

@@ -5,8 +5,6 @@ import java.awt.FlowLayout;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-
 
 import Model.Data;
 
@@ -30,7 +28,7 @@ public class FenetreMere extends JFrame implements Data {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
-        
+
         setLocation(0, 0);
     }
 

@@ -1,10 +1,12 @@
 package Controler;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.StringTokenizer;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
 import Model.Chronologie;
@@ -51,6 +53,7 @@ public class Controler implements ActionListener, Data {
 
 		    if (panelFormulaire.chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) { //Parce que le java c'est bien !!! Sans ça cela ne marche pas.
 				panelFormulaire.chImageConfirmationJLabel.setText(panelFormulaire.chooser.getSelectedFile().getName().toString());
+				panelFormulaire.chImageConfirmationVueJLabel.setIcon(new ImageIcon(new ImageIcon("images/"+panelFormulaire.chooser.getSelectedFile().getName().toString()).getImage().getScaledInstance(70, 50, Image.SCALE_DEFAULT)));
 		    } else {
 		    }
         }
@@ -64,7 +67,7 @@ public class Controler implements ActionListener, Data {
 			Evenement testEvt = new Evenement(testdate, panelFormulaire.chTitreJTextArea.getText(), panelFormulaire.chTexteJTextArea.getText(), panelFormulaire.chooser.getSelectedFile().getName().toString(), Integer.parseInt(panelFormulaire.chPoidsJComboBox.getSelectedItem().toString()));
 			chChronologie.ajout(testEvt);
 			LectureEcriture.ecriture(chFile, chChronologie);
-			chPanelChrono.setModel(chChronologie);
+			//chPanelChrono.setModel(chChronologie);
 
 			chPanelChronoDiapo.resetDiapo(chChronologie);
 	        
@@ -83,8 +86,9 @@ public class Controler implements ActionListener, Data {
 				anneeStrings[i] = chChronologie.chDebut+i+"";
 			}
 			panelFormulaire.setAnneeComboBox(anneeStrings);
-			chPanelChrono.setModel(chChronologie);
+			//chPanelChrono.setModel(chChronologie);
 			LectureEcriture.ecriture(chFile, chChronologie);
+			chPanelChronoDiapo.resetDiapo(chChronologie);
 		}
     }
 }
