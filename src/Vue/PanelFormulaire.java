@@ -85,11 +85,11 @@ public class PanelFormulaire extends JPanel implements Data {
         contrainte.gridx = 2;
         contrainte.gridy = 4;
 
-        if (chChronologie.chFin != 0) {
-            String[] anneeStrings = new String[chChronologie.chFin - chChronologie.chDebut + 1];
+        if (chChronologie.getFin() != 0) {
+            String[] anneeStrings = new String[chChronologie.getFin() - chChronologie.getDebut() + 1];
 
-            for (int i = 0; i < chChronologie.chFin - chChronologie.chDebut + 1; i++) {
-                anneeStrings[i] = chChronologie.chDebut + i + "";
+            for (int i = 0; i < chChronologie.getFin() - chChronologie.getDebut() + 1; i++) {
+                anneeStrings[i] = chChronologie.getDebut() + i + "";
                 chDateAnneeJCombobox = new JComboBox(anneeStrings);
             }
         } else {

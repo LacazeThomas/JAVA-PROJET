@@ -39,7 +39,7 @@ public class PanelDiapo extends JPanel implements Data, ActionListener {
 
 		panelCentre.setLayout(gestionnaireDesCartes);
 
-		ArrayList<Evenement> list = chChronologie.chListe;
+		ArrayList<Evenement> list = chChronologie.getArrayList();
 
 		for (Evenement s : list) {
 			JLabelDescription label = new JLabelDescription(s);
@@ -63,7 +63,7 @@ public class PanelDiapo extends JPanel implements Data, ActionListener {
 					card = (JLabelDescription) comp;
 				}
 			}
-			PanelChrono.goToCell(card.chEvenement.getDate().getAnnee() - chChronologie.chDebut);
+			PanelChrono.goToCell(card.getEvt().getDate().getAnnee() - chChronologie.getDebut());
 		}
 		if (parEvt.getSource() == chPrecedentJButton) {
 			gestionnaireDesCartes.previous(panelCentre);
@@ -73,7 +73,7 @@ public class PanelDiapo extends JPanel implements Data, ActionListener {
 					card = (JLabelDescription) comp;
 				}
 			}
-			PanelChrono.goToCell(card.chEvenement.getDate().getAnnee() - chChronologie.chDebut);
+			PanelChrono.goToCell(card.getEvt().getDate().getAnnee() - chChronologie.getDebut());
 		}
 	}
 }

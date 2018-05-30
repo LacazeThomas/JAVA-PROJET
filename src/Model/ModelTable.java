@@ -5,13 +5,13 @@ import javax.swing.table.DefaultTableModel;
 
 public class ModelTable extends DefaultTableModel implements Data {
 
-	int chDebut;
-	int chFin;
+	private int chDebut;
+	private int chFin;
 	
 	public ModelTable(Chronologie parchronologie) {
 
-		int chDebut = parchronologie.chDebut;
-		int chFin  = parchronologie.chFin;
+		int chDebut = parchronologie.getDebut();
+		int chFin  = parchronologie.getFin();
     	
     	
         this.setRowCount(4);
@@ -30,13 +30,13 @@ public class ModelTable extends DefaultTableModel implements Data {
         this.setColumnIdentifiers(col);
         
         
-        ArrayList<Evenement> list = parchronologie.chListe;
+        ArrayList<Evenement> list = parchronologie.getArrayList();
         
        
         
         
         for (Evenement s : list) {
-        	setValueAt(s, s.getPoids()-1, s.getDate().annee - chDebut);
+        	setValueAt(s, s.getPoids()-1, s.getDate().getAnnee() - chDebut);
         }
 	
 	}

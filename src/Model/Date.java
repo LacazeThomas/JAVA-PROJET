@@ -5,9 +5,9 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Date implements Comparable<Date>, Serializable {
-	public int jour;
-	public int mois;
-	public int annee;
+	private int jour;
+	private int mois;
+	private int annee;
 	private int jourSemaine;
 
 	public Date() {
@@ -48,46 +48,6 @@ public class Date implements Comparable<Date>, Serializable {
 			return 1;
 		return 0;
 	}
-
-	public Date dateDuLendemain() {
-		if (jour < dernierJourDuMois(mois, annee))
-			return new Date(jour + 1, mois, annee);
-		else if (mois < 12)
-			return new Date(1, mois + 1, annee);
-		else
-			return new Date(1, 1, annee + 1);
-	}
-
-	public Date dateDeLaVeille() {
-		if (jour > 1)
-			return new Date(jour - 1, mois, annee);
-		else if (mois > 1)
-			return new Date(Date.dernierJourDuMois(mois - 1, annee), mois - 1, annee);
-		else
-			return new Date(31, 12, annee - 1);
-	}
-
-	public static int dernierJourDuMois(int parMois, int parAnnee) {
-		switch (parMois) {
-		case 2:
-			if (estBissextile(parAnnee))
-				return 29;
-			else
-				return 28;
-		case 4:
-		case 6:
-		case 9:
-		case 11:
-			return 30;
-		default:
-			return 31;
-		} // switch
-	}
-
-	private static boolean estBissextile(int parAnnee) {
-		return parAnnee % 4 == 0 && (parAnnee % 100 != 0 || parAnnee % 400 == 0);
-	}
-
 	public String toString() {
 		String chaine = new String();
 		switch (jourSemaine) {
@@ -170,19 +130,17 @@ public class Date implements Comparable<Date>, Serializable {
 	public int getJourSemaine() {
 		return jourSemaine;
 	}
-	/**
-	 * retourne la date du premier jour de la semaine contenant this 
-	 * @return
-	 */
-	public Date datePremierJourSemaine() {
-		Date datePrem = this;
-		while (datePrem.getJourSemaine() != 2) {
-			datePrem = datePrem.dateDeLaVeille();
-		}
-		return datePrem;
+	
+	public void setJour(int parJour) {
+		jour = parJour;
 	}
-
-	public boolean isToday() {
-		return new Date().compareTo(this) == 0;
+	
+	public void setMois(int parMois) {
+		mois = parMois;
 	}
+	
+	public void setAnnee(int parAnnee) {
+		annee = parAnnee;
+	}
+	
 } // class Date

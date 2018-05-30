@@ -7,7 +7,7 @@ import Model.Evenement;
 
 public class JLabelDescription extends JLabel {
 
-	public Evenement chEvenement;
+	private Evenement chEvenement;
 
 	public JLabelDescription(Evenement parEvt) {
 
@@ -17,5 +17,10 @@ public class JLabelDescription extends JLabel {
 		setHorizontalAlignment(JLabel.CENTER);
 		setVerticalAlignment(JLabel.CENTER);
 
+	}
+	
+	
+	public Evenement getEvt() {
+		return chEvenement;
 	}
 }

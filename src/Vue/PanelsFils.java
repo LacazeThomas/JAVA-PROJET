@@ -40,7 +40,7 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
         add(panelFormulaire, NOMMENU[0]);
         add(panelChronoDiapo, NOMMENU[1]);
 
-        panelChronoDiapo.chpanelDiapo.chNomJLabel.setText("<html><center>" + chronologie.chNom + "</center></html>");
+        panelChronoDiapo.chpanelDiapo.chNomJLabel.setText("<html><center>" + chronologie.getNom() + "</center></html>");
 
         new Controler(panelChronoDiapo, panelFormulaire, ser, chronologie, panelCreation, panelChronoDiapo.chpanelDiapo,
                 panelChronoDiapo.chpanelChrono);

@@ -22,13 +22,13 @@ import Vue.PanelFormulaire;
 
 public class Controler implements ActionListener, Data {
 
-    PanelFormulaire panelFormulaire;
-    File chFile;
-    Chronologie chChronologie;
-    PanelCreation chPanelCreation;
-    PanelDiapo chPanelDiapo;
-    PanelChrono chPanelChrono;
-    PanelChronoDiapo chPanelChronoDiapo;
+    private PanelFormulaire panelFormulaire;
+    private File chFile;
+    private Chronologie chChronologie;
+    private PanelCreation chPanelCreation;
+    private PanelDiapo chPanelDiapo;
+    private PanelChrono chPanelChrono;
+    private PanelChronoDiapo chPanelChronoDiapo;
     
     public Controler(PanelChronoDiapo parPanelChronoDiapo,PanelFormulaire parPanelFormulaire, File parFile, Chronologie parChronologie, PanelCreation parPanelCreation,PanelDiapo parPanelDiapo, PanelChrono parPanelChrono) {
         panelFormulaire = parPanelFormulaire;
@@ -45,7 +45,6 @@ public class Controler implements ActionListener, Data {
     public void actionPerformed(ActionEvent parEvt) {
 
         if (parEvt.getActionCommand() == "IMG") {
-        	System.out.println(chChronologie.toString());
         	panelFormulaire.chooser.setCurrentDirectory(new java.io.File("images/."));
         	panelFormulaire.chooser.setDialogTitle("Choisir une image");
         	panelFormulaire.chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -59,15 +58,14 @@ public class Controler implements ActionListener, Data {
         }
 		if(parEvt.getActionCommand() == "+") {
 			Date testdate = new Date();
-			testdate.jour = Integer.parseInt(panelFormulaire.chDateJoursJCombobox.getSelectedItem().toString());
-			testdate.mois = Integer.parseInt(panelFormulaire.chDateMoisJCombobox.getSelectedItem().toString());
-			testdate.annee = Integer.parseInt(panelFormulaire.chDateAnneeJCombobox.getSelectedItem().toString());
+			testdate.setJour(Integer.parseInt(panelFormulaire.chDateJoursJCombobox.getSelectedItem().toString()));
+			testdate.setMois(Integer.parseInt(panelFormulaire.chDateMoisJCombobox.getSelectedItem().toString()));
+			testdate.setAnnee(Integer.parseInt(panelFormulaire.chDateAnneeJCombobox.getSelectedItem().toString()));
 			
 			
 			Evenement testEvt = new Evenement(testdate, panelFormulaire.chTitreJTextArea.getText(), panelFormulaire.chTexteJTextArea.getText(), panelFormulaire.chooser.getSelectedFile().getName().toString(), Integer.parseInt(panelFormulaire.chPoidsJComboBox.getSelectedItem().toString()));
 			chChronologie.ajout(testEvt);
 			LectureEcriture.ecriture(chFile, chChronologie);
-			//chPanelChrono.setModel(chChronologie);
 
 			chPanelChronoDiapo.resetDiapo(chChronologie);
 	        
@@ -75,18 +73,17 @@ public class Controler implements ActionListener, Data {
 		}
 		
 		if(parEvt.getActionCommand() == "CreationAjout") {
-			chChronologie.chNom = chPanelCreation.chTitreJTextField.getText();
-			chChronologie.chDebut = Integer.parseInt(chPanelCreation.chDateDebutJTextField.getText());
-			chChronologie.chFin = Integer.parseInt(chPanelCreation.chDateFinJTextField.getText());
+			chChronologie.setNom(chPanelCreation.chTitreJTextField.getText());
+			chChronologie.setDebut(Integer.parseInt(chPanelCreation.chDateDebutJTextField.getText()));
+			chChronologie.setFin(Integer.parseInt(chPanelCreation.chDateFinJTextField.getText()));
 			chPanelDiapo.chNomJLabel.setText(chPanelCreation.chTitreJTextField.getText());
 
-			String []anneeStrings = new String[chChronologie.chFin-chChronologie.chDebut+1];
+			String []anneeStrings = new String[chChronologie.getFin()-chChronologie.getDebut()+1];
 
-			for(int i = 0; i<chChronologie.chFin-chChronologie.chDebut+1;i++){
-				anneeStrings[i] = chChronologie.chDebut+i+"";
+			for(int i = 0; i<chChronologie.getFin()-chChronologie.getDebut()+1;i++){
+				anneeStrings[i] = chChronologie.getDebut()+i+"";
 			}
 			panelFormulaire.setAnneeComboBox(anneeStrings);
-			//chPanelChrono.setModel(chChronologie);
 			LectureEcriture.ecriture(chFile, chChronologie);
 			chPanelChronoDiapo.resetDiapo(chChronologie);
 		}

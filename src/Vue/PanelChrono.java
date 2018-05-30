@@ -12,10 +12,10 @@ import Model.ModelTable;
 
 public class PanelChrono extends JPanel {
 
-    public static JTable chTable;
-    Chronologie chChronologie;
-    JScrollPane js;
-    PanelDiapo chPanelDiapo;
+    private static JTable chTable;
+    private Chronologie chChronologie;
+    private JScrollPane js;
+    private PanelDiapo chPanelDiapo;
 
     public PanelChrono(Chronologie parChronologie, PanelDiapo parPanelDiapo) {
         chChronologie = parChronologie;
@@ -32,13 +32,17 @@ public class PanelChrono extends JPanel {
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         chTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         chTable.setDefaultRenderer(Object.class, new CelluleRenderer());
+        chTable.getTableHeader().setReorderingAllowed(false);
+        chTable.getTableHeader().setResizingAllowed(false);
+        chTable.setRowSelectionAllowed(false);
+        
+        
         add(js);
         chTable.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 int row = chTable.rowAtPoint(evt.getPoint());
                 int col = chTable.columnAtPoint(evt.getPoint());
-                System.out.println(chTable.getValueAt(row, col));
                 chPanelDiapo.gestionnaireDesCartes.show(chPanelDiapo.panelCentre, chTable.getValueAt(row, col) + "");
             }
         });
