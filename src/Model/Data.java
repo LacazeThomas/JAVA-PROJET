@@ -1,7 +1,7 @@
 package Model;
 
 public interface Data {
-    final String[] BOUTONS = { "<<", "<", ">", ">>" };
+    final String[] BOUTONSDIAPO = { "<", ">" };
     final String[] listContent = { "Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre",
             " Octobre", "   Novembre", "  Décembre" };
     final String AJOUT = "+";

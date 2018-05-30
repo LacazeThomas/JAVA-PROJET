@@ -9,15 +9,23 @@ import Model.Chronologie;
 public class PanelChronoDiapo extends JPanel{
 	
 	
-	public PanelDiapo chpanelDiapo = new PanelDiapo();
-	PanelChrono chpanelChrono = new PanelChrono(new Chronologie());
+	public PanelDiapo chpanelDiapo;
+	public PanelChrono chpanelChrono;
 	
 	
 	public PanelChronoDiapo(Chronologie parchronologie) {
 		setLayout(new BorderLayout());
 		
+		chpanelDiapo = new PanelDiapo(parchronologie);
 		chpanelChrono = new PanelChrono(parchronologie);
 		add(chpanelChrono, BorderLayout.SOUTH);
 		add(chpanelDiapo, BorderLayout.NORTH);
+	}
+	
+	public void resetDiapo(Chronologie parchronologie) {
+		
+		remove(chpanelDiapo);
+		chpanelDiapo = new PanelDiapo(parchronologie);
+		add(chpanelDiapo);
 	}
 }

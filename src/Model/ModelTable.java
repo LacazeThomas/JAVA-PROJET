@@ -36,9 +36,13 @@ public class ModelTable extends DefaultTableModel implements Data {
         
         
         for (Evenement s : list) {
-        	setValueAt(s.getTitre(), s.getPoids()-1, s.getDate().annee - chDebut);
+        	setValueAt(s, s.getPoids()-1, s.getDate().annee - chDebut);
         }
 	
+	}
+	
+	public Class getColumnClass(int parColonne) {
+		return Evenement.class;
 	}
 	
 }

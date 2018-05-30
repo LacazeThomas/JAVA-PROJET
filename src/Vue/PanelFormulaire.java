@@ -42,6 +42,8 @@ public class PanelFormulaire extends JPanel implements Data {
 	public JButton chImageJButton = new JButton("Parcourir...");
 	public JFileChooser chooser = new JFileChooser();
 	
+	public JLabel chImageConfirmationJLabel = new JLabel("");
+	
 	public PanelFormulaire(Chronologie parChronologie) {
 		chChronologie = parChronologie;
 		
@@ -139,6 +141,10 @@ public class PanelFormulaire extends JPanel implements Data {
         contrainte.gridx = 2;
         contrainte.gridy = 6;
         this.add(chImageJButton, contrainte);
+        
+        contrainte.gridx = 2;
+        contrainte.gridy = 7;
+        this.add(chImageConfirmationJLabel, contrainte);
         
 	}
 	

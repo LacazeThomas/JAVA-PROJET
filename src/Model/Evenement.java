@@ -11,7 +11,7 @@ public class Evenement implements Comparable<Evenement>, Serializable {
     private static int chNbEvt = 0;
 
     public String toString() {
-        return chDate.toString() + " | " + chNom + " Texte: " + chTexte + " Path: " + chPath + " Poids: " + chPoids;
+        return chNom;
     }
 
 
@@ -29,6 +29,10 @@ public class Evenement implements Comparable<Evenement>, Serializable {
     public String getNom() {
         return chNom;
     }
+    
+    public String getPath() {
+    	return chPath;
+    }
 
     public void setNom(String parNom) {
         chNom = parNom;
@@ -37,7 +41,8 @@ public class Evenement implements Comparable<Evenement>, Serializable {
     public static int getNbEvt() {
         return chNbEvt;
     }
-
+    
+    
     /*     public static Evenement lireEvenement(){
         Date a = Date.saisirUneDate();
         System.out.println("Nom de l'evenement: ");

@@ -30,6 +30,7 @@ public class FenetreMere extends JFrame implements Data {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
+        
         setLocation(0, 0);
     }
 
