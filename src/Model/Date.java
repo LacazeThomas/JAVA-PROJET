@@ -50,36 +50,14 @@ public class Date implements Comparable<Date>, Serializable {
 
 	public String toString() {
 		String chaine = new String();
-		switch (jourSemaine) {
-		case 1:
-			chaine = "dimanche";
-			break;
-		case 2:
-			chaine = "lundi";
-			break;
-		case 3:
-			chaine = "mardi";
-			break;
-		case 4:
-			chaine = "mercredi";
-			break;
-		case 5:
-			chaine = "jeudi";
-			break;
-		case 6:
-			chaine = "vendredi";
-			break;
-		case 7:
-			chaine = "samedi";
-			break;
-		}
-		chaine += " " + jour + " ";
+
+		chaine += jour + " ";
 		switch (mois) {
 		case 1:
 			chaine += "janvier";
 			break;
 		case 2:
-			chaine += "fï¿½vrier";
+			chaine += "février";
 			break;
 		case 3:
 			chaine += "mars";
@@ -109,9 +87,10 @@ public class Date implements Comparable<Date>, Serializable {
 			chaine += "novembre";
 			break;
 		case 12:
-			chaine += "dï¿½cembre";
+			chaine += "décembre";
 			break;
 		}
+		chaine += " " + annee;
 		return chaine;
 	}
 

@@ -65,7 +65,7 @@ public class Controler implements ActionListener, Data {
 			testdate.setAnnee(Integer.parseInt(panelFormulaire.getChDateAnneeJCombobox().getSelectedItem().toString()));
 
 			Evenement testEvt = new Evenement(testdate, panelFormulaire.getChTitreJTextArea().getText(),
-					panelFormulaire.getChTitreJTextArea().getText(),
+					panelFormulaire.getChTexteJTextArea().getText(),
 					panelFormulaire.getChooser().getSelectedFile().getName().toString(),
 					Integer.parseInt(panelFormulaire.getChPoidsJComboBox().getSelectedItem().toString()));
 			chChronologie.ajout(testEvt);

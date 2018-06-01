@@ -1,5 +1,6 @@
 package Vue;
 
+import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -10,6 +11,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import Controler.Controler;
@@ -21,7 +23,7 @@ public class PanelFormulaire extends JPanel implements Data {
     private JButton chAjoutJButton = new JButton("+");
     private Chronologie chChronologie = new Chronologie();
     private JTextArea chTitreJTextArea = new JTextArea("", 1, 10);
-    private JTextArea chTexteJTextArea = new JTextArea("", 1, 10);
+    private JTextArea chTexteJTextArea = new JTextArea("", 6 ,25);
     private JComboBox chDateAnneeJCombobox;
     private JComboBox chDateMoisJCombobox;
     private JComboBox chDateJoursJCombobox;
@@ -72,9 +74,20 @@ public class PanelFormulaire extends JPanel implements Data {
 
         contrainte.gridx = 2;
         contrainte.gridy = 3;
-        texteEventJLabel.setLabelFor(chTexteJTextArea);
-        this.add(chTexteJTextArea, contrainte);
+        
+        
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());  //give your JPanel a BorderLayout
 
+
+        JScrollPane scroll = new JScrollPane(chTexteJTextArea); //place the JTextArea in a scroll pane
+        panel.add(scroll, BorderLayout.CENTER); //add the JScrollPane to the panel
+        // CENTER will use up all available space
+        
+        texteEventJLabel.setLabelFor(chTexteJTextArea);
+        this.add(panel, contrainte);
+        
+        
         contrainte.gridx = 1;
         contrainte.gridy = 4;
         JLabel AnneeJComboBox =new JLabel("Date:");
