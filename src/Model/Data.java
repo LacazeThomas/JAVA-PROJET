@@ -6,6 +6,6 @@ public interface Data {
             " Octobre", "   Novembre", "  Décembre" };
     final String AJOUT = "+";
     final String[] NOMJOUR = { "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche" };
-    final String[] NOMMENU = { "Creation","Affichage","Quitter"};
-    final String[] POIDS = {"1","2","3","4"};
+    final String[] NOMMENU = { "Creation", "Affichage", "Quitter" };
+    final String[] POIDS = { "1", "2", "3", "4" };
 }

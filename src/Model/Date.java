@@ -27,9 +27,8 @@ public class Date implements Comparable<Date>, Serializable {
 	}
 
 	/**
-	 * retourne 0 si this et parDate sont �gales, 
-	 * -1 si this pr�c�de parDate,
-	 *  1 si parDate pr�c�de this
+	 * retourne 0 si this et parDate sont �gales, -1 si this pr�c�de parDate, 1 si
+	 * parDate pr�c�de this
 	 */
 	public int compareTo(Date parDate) {
 		if (annee < parDate.annee)
@@ -48,6 +47,7 @@ public class Date implements Comparable<Date>, Serializable {
 			return 1;
 		return 0;
 	}
+
 	public String toString() {
 		String chaine = new String();
 		switch (jourSemaine) {
@@ -130,17 +130,17 @@ public class Date implements Comparable<Date>, Serializable {
 	public int getJourSemaine() {
 		return jourSemaine;
 	}
-	
+
 	public void setJour(int parJour) {
 		jour = parJour;
 	}
-	
+
 	public void setMois(int parMois) {
 		mois = parMois;
 	}
-	
+
 	public void setAnnee(int parAnnee) {
 		annee = parAnnee;
 	}
-	
+
 } // class Date

@@ -17,33 +17,18 @@ import Model.Data;
 
 public class PanelFormulaire extends JPanel implements Data {
 
-    public JLabel chTitreFormulaireJLabel = new JLabel("Formulaire d'ajout:");
-    public JButton chAjoutJButton = new JButton("+");
-
-    public Chronologie chChronologie = new Chronologie();
-
-    public JLabel chTitreJLabel = new JLabel("Titre:");
-    public JTextArea chTitreJTextArea = new JTextArea("", 1, 10);
-
-    public JLabel chTexteJLabel = new JLabel("Texte:");
-    public JTextArea chTexteJTextArea = new JTextArea("", 1, 10);
-
-    public JLabel chDateJLabel = new JLabel("Date:");
-    public JComboBox chDateAnneeJCombobox;
-
-    public JComboBox chDateMoisJCombobox;
-
-    public JComboBox chDateJoursJCombobox;
-
-    public JLabel chPoidsJLabel = new JLabel("Poids:");
-    public JComboBox chPoidsJComboBox = new JComboBox(POIDS);
-
-    public JLabel chImageJLabel = new JLabel("Image");
-    public JButton chImageJButton = new JButton("Parcourir...");
-    public JFileChooser chooser = new JFileChooser();
-
-    public JLabel chImageConfirmationJLabel = new JLabel("");
-    public JLabel chImageConfirmationVueJLabel = new JLabel("");
+    private JButton chAjoutJButton = new JButton("+");
+    private Chronologie chChronologie = new Chronologie();
+    private JTextArea chTitreJTextArea = new JTextArea("", 1, 10);
+    private JTextArea chTexteJTextArea = new JTextArea("", 1, 10);
+    private JComboBox chDateAnneeJCombobox;
+    private JComboBox chDateMoisJCombobox;
+    private JComboBox chDateJoursJCombobox;
+    private JComboBox chPoidsJComboBox = new JComboBox(POIDS);
+    private JButton chImageJButton = new JButton("Parcourir...");
+    private JFileChooser chooser = new JFileChooser();
+    private JLabel chImageConfirmationJLabel = new JLabel("");
+    private JLabel chImageConfirmationVueJLabel = new JLabel("");
 
     public PanelFormulaire(Chronologie parChronologie) {
         chChronologie = parChronologie;
@@ -56,7 +41,7 @@ public class PanelFormulaire extends JPanel implements Data {
         contrainte.gridy = 1;
         contrainte.insets = new Insets(10, 0, 0, 0);
         contrainte.anchor = GridBagConstraints.WEST;
-        this.add(chTitreFormulaireJLabel, contrainte);
+        this.add(new JLabel("Formulaire d'ajout:"), contrainte);
 
         contrainte.gridx = 2;
         contrainte.gridy = 1;
@@ -64,7 +49,7 @@ public class PanelFormulaire extends JPanel implements Data {
 
         contrainte.gridx = 1;
         contrainte.gridy = 2;
-        this.add(chTitreJLabel, contrainte);
+        this.add(new JLabel("Titre:"), contrainte);
 
         contrainte.gridx = 2;
         contrainte.gridy = 2;
@@ -72,7 +57,7 @@ public class PanelFormulaire extends JPanel implements Data {
 
         contrainte.gridx = 1;
         contrainte.gridy = 3;
-        this.add(chTexteJLabel, contrainte);
+        this.add(new JLabel("Texte:"), contrainte);
 
         contrainte.gridx = 2;
         contrainte.gridy = 3;
@@ -80,7 +65,7 @@ public class PanelFormulaire extends JPanel implements Data {
 
         contrainte.gridx = 1;
         contrainte.gridy = 4;
-        this.add(chDateJLabel, contrainte);
+        this.add(new JLabel("Date:"), contrainte);
 
         contrainte.gridx = 2;
         contrainte.gridy = 4;
@@ -118,7 +103,7 @@ public class PanelFormulaire extends JPanel implements Data {
 
         contrainte.gridx = 1;
         contrainte.gridy = 5;
-        this.add(chPoidsJLabel, contrainte);
+        this.add(new JLabel("Poids:"), contrainte);
 
         contrainte.gridx = 2;
         contrainte.gridy = 5;
@@ -126,7 +111,7 @@ public class PanelFormulaire extends JPanel implements Data {
 
         contrainte.gridx = 1;
         contrainte.gridy = 6;
-        this.add(chImageJLabel, contrainte);
+        this.add(new JLabel("Image"), contrainte);
 
         contrainte.gridx = 2;
         contrainte.gridy = 6;
@@ -156,5 +141,45 @@ public class PanelFormulaire extends JPanel implements Data {
             chDateAnneeJCombobox.addItem(s);
         }
 
+    }
+
+    public JTextArea getChTitreJTextArea() {
+        return chTitreJTextArea;
+    }
+
+    public JTextArea getChTexteJTextArea() {
+        return chTexteJTextArea;
+    }
+
+    public JComboBox getChDateAnneeJCombobox() {
+        return chDateAnneeJCombobox;
+    }
+
+    public JComboBox getChDateMoisJCombobox() {
+        return chDateMoisJCombobox;
+    }
+
+    public JComboBox getChDateJoursJCombobox() {
+        return chDateJoursJCombobox;
+    }
+
+    public JComboBox getChPoidsJComboBox() {
+        return chPoidsJComboBox;
+    }
+
+    public JButton getChImageJButton() {
+        return chImageJButton;
+    }
+
+    public JFileChooser getChooser() {
+        return chooser;
+    }
+
+    public JLabel getChImageConfirmationJLabel() {
+        return chImageConfirmationJLabel;
+    }
+
+    public JLabel getChImageConfirmationVueJLabel() {
+        return chImageConfirmationVueJLabel;
     }
 }

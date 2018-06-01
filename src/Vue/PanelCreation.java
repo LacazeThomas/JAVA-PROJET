@@ -13,10 +13,10 @@ import Controler.Controler;
 
 public class PanelCreation extends JPanel {
 
-    public JTextArea chTitreJTextField = new JTextArea("", 1, 10);
-    public JTextArea chDateDebutJTextField = new JTextArea("", 1, 10);
-    public JTextArea chDateFinJTextField = new JTextArea("", 1, 10);
-    public JButton chAjoutJButton = new JButton("+");
+    private JTextArea chTitreJTextField = new JTextArea("", 1, 10);
+    private JTextArea chDateDebutJTextField = new JTextArea("", 1, 10);
+    private JTextArea chDateFinJTextField = new JTextArea("", 1, 10);
+    private JButton chAjoutJButton = new JButton("+");
 
     public PanelCreation() {
         setLayout(new GridBagLayout());
@@ -60,6 +60,18 @@ public class PanelCreation extends JPanel {
         chAjoutJButton.addActionListener(parControler);
         chAjoutJButton.setActionCommand("CreationAjout");
 
+    }
+
+    public JTextArea getChTitreJTextField() {
+        return chTitreJTextField;
+    }
+
+    public JTextArea getChDateDebutJTextField() {
+        return chDateDebutJTextField;
+    }
+
+    public JTextArea getChDateFinJTextField() {
+        return chDateFinJTextField;
     }
 
 }

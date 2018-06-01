@@ -18,16 +18,15 @@ import Model.Evenement;
 
 public class PanelDiapo extends JPanel implements Data, ActionListener {
 
-	public JLabel chNomJLabel;
-	public JLabel chCenterJLabel;
+	private JLabel chNomJLabel;
 
-	public JPanel panelCentre = new JPanel();
+	private JPanel panelCentre = new JPanel();
 
-	public JButton chSuivantJButton = new JButton(BOUTONSDIAPO[1]);
-	public JButton chPrecedentJButton = new JButton(BOUTONSDIAPO[0]);
-	public Chronologie chChronologie;
+	private JButton chSuivantJButton = new JButton(BOUTONSDIAPO[1]);
+	private JButton chPrecedentJButton = new JButton(BOUTONSDIAPO[0]);
+	private Chronologie chChronologie;
 
-	public CardLayout gestionnaireDesCartes = new CardLayout();
+	private CardLayout gestionnaireDesCartes = new CardLayout();
 
 	public PanelDiapo(Chronologie parChronologie) {
 
@@ -45,17 +44,20 @@ public class PanelDiapo extends JPanel implements Data, ActionListener {
 			JLabelDescription label = new JLabelDescription(s);
 			panelCentre.add(label, s.toString());
 		}
-
-		chSuivantJButton.addActionListener(this);
-		chPrecedentJButton.addActionListener(this);
 		add(panelCentre, BorderLayout.CENTER);
 
 		add(chSuivantJButton, BorderLayout.EAST);
 		add(chPrecedentJButton, BorderLayout.WEST);
+
+		chSuivantJButton.addActionListener(this);
+		chSuivantJButton.setActionCommand("Suivant");
+		chPrecedentJButton.addActionListener(this);
+		chPrecedentJButton.setActionCommand("Precedent");
+
 	}
 
 	public void actionPerformed(ActionEvent parEvt) {
-		if (parEvt.getSource() == chSuivantJButton) {
+		if (parEvt.getActionCommand() == "Suivant") {
 			gestionnaireDesCartes.next(panelCentre);
 			JLabelDescription card = null;
 			for (Component comp : panelCentre.getComponents()) {
@@ -65,7 +67,7 @@ public class PanelDiapo extends JPanel implements Data, ActionListener {
 			}
 			PanelChrono.goToCell(card.getEvt().getDate().getAnnee() - chChronologie.getDebut());
 		}
-		if (parEvt.getSource() == chPrecedentJButton) {
+		if (parEvt.getActionCommand() == "Precedent") {
 			gestionnaireDesCartes.previous(panelCentre);
 			JLabelDescription card = null;
 			for (Component comp : panelCentre.getComponents()) {
@@ -75,5 +77,17 @@ public class PanelDiapo extends JPanel implements Data, ActionListener {
 			}
 			PanelChrono.goToCell(card.getEvt().getDate().getAnnee() - chChronologie.getDebut());
 		}
+	}
+
+	public CardLayout getCardLayout() {
+		return gestionnaireDesCartes;
+	}
+
+	public JPanel getPanelCentre() {
+		return panelCentre;
+	}
+
+	public JLabel getChNomJLabel() {
+		return chNomJLabel;
 	}
 }

@@ -18,8 +18,7 @@ public class JLabelDescription extends JLabel {
 		setVerticalAlignment(JLabel.CENTER);
 
 	}
-	
-	
+
 	public Evenement getEvt() {
 		return chEvenement;
 	}

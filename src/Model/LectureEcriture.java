@@ -1,11 +1,11 @@
 package Model;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.File;
 
 public class LectureEcriture {
     public static Object lecture(File parFichier) {
@@ -35,8 +35,8 @@ public class LectureEcriture {
             flux.flush();
             flux.close();
         } catch (IOException parException) {
-            System.err.println("Probleme a lâ€™ecriture\n" + parException.toString ());
+            System.err.println("Probleme a lâ€™ecriture\n" + parException.toString());
             System.exit(1);
         }
-    } //  ecriture ()
+    } // ecriture ()
 }

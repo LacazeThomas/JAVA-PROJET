@@ -35,15 +35,14 @@ public class PanelChrono extends JPanel {
         chTable.getTableHeader().setReorderingAllowed(false);
         chTable.getTableHeader().setResizingAllowed(false);
         chTable.setRowSelectionAllowed(false);
-        
-        
+
         add(js);
         chTable.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 int row = chTable.rowAtPoint(evt.getPoint());
                 int col = chTable.columnAtPoint(evt.getPoint());
-                chPanelDiapo.gestionnaireDesCartes.show(chPanelDiapo.panelCentre, chTable.getValueAt(row, col) + "");
+                chPanelDiapo.getCardLayout().show(chPanelDiapo.getPanelCentre(), chTable.getValueAt(row, col) + "");
             }
         });
 

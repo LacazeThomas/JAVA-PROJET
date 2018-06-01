@@ -14,7 +14,7 @@ import Model.LectureEcriture;
 
 public class PanelsFils extends JPanel implements ActionListener, Data {
 
-    CardLayout gestionnaireDesCartes = new CardLayout();
+    private CardLayout gestionnaireDesCartes = new CardLayout();
 
     public PanelsFils() {
         setLayout(gestionnaireDesCartes);
@@ -40,10 +40,9 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
         add(panelFormulaire, NOMMENU[0]);
         add(panelChronoDiapo, NOMMENU[1]);
 
-        panelChronoDiapo.chpanelDiapo.chNomJLabel.setText("<html><center>" + chronologie.getNom() + "</center></html>");
+        panelChronoDiapo.getPanelDiapo().getChNomJLabel().setText(chronologie.getNom());
 
-        new Controler(panelChronoDiapo, panelFormulaire, ser, chronologie, panelCreation, panelChronoDiapo.chpanelDiapo,
-                panelChronoDiapo.chpanelChrono);
+        new Controler(panelChronoDiapo, panelFormulaire, ser, chronologie, panelCreation);
 
     }
 
