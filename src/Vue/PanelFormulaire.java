@@ -3,6 +3,7 @@ package Vue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -41,31 +42,44 @@ public class PanelFormulaire extends JPanel implements Data {
         contrainte.gridy = 1;
         contrainte.insets = new Insets(10, 0, 0, 0);
         contrainte.anchor = GridBagConstraints.WEST;
-        this.add(new JLabel("Formulaire d'ajout:"), contrainte);
-
+        JLabel formulaireAjoutJLabel = new JLabel("Formulaire Ajout:");
+        formulaireAjoutJLabel.setDisplayedMnemonic(KeyEvent.VK_F);
+        this.add(formulaireAjoutJLabel, contrainte);
+       
         contrainte.gridx = 2;
         contrainte.gridy = 1;
+        formulaireAjoutJLabel.setLabelFor(chAjoutJButton);
         this.add(chAjoutJButton, contrainte);
 
         contrainte.gridx = 1;
         contrainte.gridy = 2;
-        this.add(new JLabel("Titre:"), contrainte);
+        JLabel titreEventJLabel = new JLabel("Titre:");
+        titreEventJLabel.setDisplayedMnemonic(KeyEvent.VK_T);
+        this.add(titreEventJLabel, contrainte);
+        
 
         contrainte.gridx = 2;
         contrainte.gridy = 2;
+        titreEventJLabel.setLabelFor(chTitreJTextArea);
         this.add(chTitreJTextArea, contrainte);
+        
 
         contrainte.gridx = 1;
         contrainte.gridy = 3;
-        this.add(new JLabel("Texte:"), contrainte);
+        JLabel texteEventJLabel = new JLabel("Texte:") ;
+        texteEventJLabel.setDisplayedMnemonic(KeyEvent.VK_E);
+        this.add(texteEventJLabel, contrainte);
 
         contrainte.gridx = 2;
         contrainte.gridy = 3;
+        texteEventJLabel.setLabelFor(chTexteJTextArea);
         this.add(chTexteJTextArea, contrainte);
 
         contrainte.gridx = 1;
         contrainte.gridy = 4;
-        this.add(new JLabel("Date:"), contrainte);
+        JLabel AnneeJComboBox =new JLabel("Date:");
+        AnneeJComboBox.setDisplayedMnemonic(KeyEvent.VK_D);
+        this.add(AnneeJComboBox, contrainte);
 
         contrainte.gridx = 2;
         contrainte.gridy = 4;
@@ -80,7 +94,7 @@ public class PanelFormulaire extends JPanel implements Data {
         } else {
             chDateAnneeJCombobox = new JComboBox();
         }
-
+        AnneeJComboBox.setLabelFor(chDateAnneeJCombobox);
         this.add(chDateAnneeJCombobox, contrainte);
 
         String[] moisStrings = new String[12];
@@ -103,18 +117,24 @@ public class PanelFormulaire extends JPanel implements Data {
 
         contrainte.gridx = 1;
         contrainte.gridy = 5;
-        this.add(new JLabel("Poids:"), contrainte);
+        JLabel PoidsEvenementJLabel = new JLabel("Poids:");
+        PoidsEvenementJLabel.setDisplayedMnemonic(KeyEvent.VK_P);
+        this.add(PoidsEvenementJLabel, contrainte);
 
         contrainte.gridx = 2;
         contrainte.gridy = 5;
+        PoidsEvenementJLabel.setLabelFor(chPoidsJComboBox);
         this.add(chPoidsJComboBox, contrainte);
 
         contrainte.gridx = 1;
         contrainte.gridy = 6;
-        this.add(new JLabel("Image"), contrainte);
+        JLabel ImageEvenementJLabel = new JLabel("Image");
+        ImageEvenementJLabel.setDisplayedMnemonic(KeyEvent.VK_I);
+        this.add(ImageEvenementJLabel, contrainte);
 
         contrainte.gridx = 2;
         contrainte.gridy = 6;
+        ImageEvenementJLabel.setLabelFor(chImageJButton);
         this.add(chImageJButton, contrainte);
 
         contrainte.gridx = 1;
