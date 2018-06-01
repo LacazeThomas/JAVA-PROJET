@@ -72,7 +72,7 @@ public class Controler implements ActionListener, Data {
 			LectureEcriture.ecriture(chFile, chChronologie);
 
 			chPanelChronoDiapo.resetDiapo(chChronologie);
-
+			chPanelChronoDiapo.getPanelDiapo().getChNomJLabel().setText(chChronologie.getNom());
 		}
 
 		if (parEvt.getActionCommand() == "CreationAjout") {
