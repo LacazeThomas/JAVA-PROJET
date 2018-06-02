@@ -16,7 +16,7 @@ public class FenetreMere extends JFrame implements Data {
 	public JMenuBar chMenuBar;
 	
     public FenetreMere() {
-    	
+    	setTitle("Frise chronologique");
     	chMenuBar = new JMenuBar();
         this.setJMenuBar(chMenuBar);	
     	

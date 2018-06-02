@@ -14,7 +14,7 @@ import Controler.Controler;
 
 public class PanelCreation extends JPanel {
 
-    private JTextArea chTitreJTextField = new JTextArea("", 1, 25);
+    private JTextArea chTitreJTextField = new JTextArea("", 1, 10);
     private JTextArea chDateDebutJTextField = new JTextArea("", 1, 10);
     private JTextArea chDateFinJTextField = new JTextArea("", 1, 10);
     private JButton chAjoutJButton = new JButton("+");

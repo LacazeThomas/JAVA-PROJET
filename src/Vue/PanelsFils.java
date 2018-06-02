@@ -38,7 +38,7 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
         Chronologie chronologie;
         if (chSer.length() == 0) {
             add(panelCreation, "Creation");
-            gestionnaireDesCartes.show(this, "Ajout");
+            gestionnaireDesCartes.show(this, "Creation");
             chronologie = new Chronologie();
 
         } else
@@ -109,7 +109,7 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
         if (parSer.length() == 0) {
         	getFenetreMere().chMenuBar.setVisible(false);
             add(panelCreation, "Creation");
-            gestionnaireDesCartes.show(this, "Ajout");
+            gestionnaireDesCartes.show(this, "Creation");
             chronologie = new Chronologie();
 
         } else {
