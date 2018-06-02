@@ -80,7 +80,6 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
 				System.out.println(chooser.getSelectedFile().getName().toString());
 				chSer = new File("save" + File.separator + chooser.getSelectedFile().getName().toString());
 				reset(chFenetreMere, chSer);
-				gestionnaireDesCartes.show(this, NOMSOUSMENU2[0]);
 			} else {
 				
 			}
@@ -108,13 +107,16 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
         panelCreation = new PanelCreation();
 
         Chronologie chronologie;
-        if (chSer.length() == 0) {
+        if (parSer.length() == 0) {
             add(panelCreation, "Creation");
             gestionnaireDesCartes.show(this, "Creation");
             chronologie = new Chronologie();
 
-        } else
-            chronologie = (Chronologie) LectureEcriture.lecture(chSer);
+        } else {
+        	chronologie = (Chronologie) LectureEcriture.lecture(chSer);
+        	gestionnaireDesCartes.show(this, NOMSOUSMENU2[0]);
+        }
+        
         	
         panelChronoDiapo = new PanelChronoDiapo(chronologie);
         panelFormulaire = new PanelFormulaire(chronologie);
@@ -123,7 +125,6 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
         add(panelChronoDiapo, NOMSOUSMENU2[1]);
 
         panelChronoDiapo.getPanelDiapo().getChNomJLabel().setText(chronologie.getNom());
-
         new Controler(this,panelChronoDiapo, panelFormulaire, chSer, chronologie, panelCreation);
 
     }
