@@ -97,7 +97,7 @@ public class Controler implements ActionListener, Data {
 			LectureEcriture.ecriture(chFile, chChronologie);
 			chPanelChronoDiapo.resetDiapo(chChronologie);
 			chPanelChronoDiapo.getPanelDiapo().getChNomJLabel().setText(chChronologie.getNom());
-			
+			chPanelsFils.getFenetreMere().chMenuBar.setVisible(true);
 			chPanelsFils.getCardLayout().show(chPanelsFils.getFenetreMere().getPanelsFils(),  NOMMENU[0]);
 		}
 

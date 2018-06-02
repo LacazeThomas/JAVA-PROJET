@@ -1,28 +1,46 @@
 package Vue;
 
 import java.awt.FlowLayout;
+import java.awt.MenuBar;
+import java.io.File;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import Model.Chronologie;
 import Model.Data;
+import Model.LectureEcriture;
 
 public class FenetreMere extends JFrame implements Data {
 
-	PanelsFils chPanelsFils;
+	private PanelsFils chPanelsFils;
+	public JMenuBar chMenuBar;
 	
     public FenetreMere() {
-    	chPanelsFils = new PanelsFils(this);
+    	
+    	chMenuBar = new JMenuBar();
+        this.setJMenuBar(chMenuBar);	
+    	
+        File ser = new File("save" + File.separator + "chronologie.ser");
+            
+        
+        if (ser.length() == 0) {
+        	chMenuBar.setVisible(false);
+        }
+        	
+    	
+    	
+    	chPanelsFils = new PanelsFils(this,ser);
+    	
+    	chMenuBar = new JMenuBar();
+        this.setJMenuBar(chMenuBar);
 
-        JMenuBar menuBar = new JMenuBar();
-        this.setJMenuBar(menuBar);
-
-        menuBar.setLayout(new FlowLayout(FlowLayout.LEFT));
+        chMenuBar.setLayout(new FlowLayout(FlowLayout.LEFT));
 
         for (int i = 0; i < NOMMENU.length; i++) {
             JMenuItem menuItem = new JMenuItem(NOMMENU[i]);
-            menuBar.add(menuItem);
+            chMenuBar.add(menuItem);
             menuItem.addActionListener(chPanelsFils);
             menuItem.setActionCommand(NOMMENU[i]);
         }
@@ -30,7 +48,8 @@ public class FenetreMere extends JFrame implements Data {
         setContentPane(chPanelsFils);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1350,700);
-        setVisible(true);
+        setVisible(true)
+      ;
 
         setLocation(0, 0);
     }

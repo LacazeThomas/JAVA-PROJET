@@ -17,27 +17,26 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
     private static CardLayout gestionnaireDesCartes = new CardLayout();
 
     FenetreMere chFenetreMere;
+    File chSer;
     
-    public PanelsFils(FenetreMere parFenetreMere) {
+    public PanelsFils(FenetreMere parFenetreMere, File parSer) {
     	
     	chFenetreMere = parFenetreMere;
+    	chSer = parSer;
     	
         setLayout(gestionnaireDesCartes);
 
         PanelCreation panelCreation = new PanelCreation();
 
-        File ser = new File("save" + File.separator + "chronologie.ser");
-
         Chronologie chronologie;
-        if (ser.length() == 0) {
-
+        if (chSer.length() == 0) {
             add(panelCreation, "Creation");
             gestionnaireDesCartes.show(this, "Creation");
             chronologie = new Chronologie();
 
         } else
-            chronologie = (Chronologie) LectureEcriture.lecture(ser);
-
+            chronologie = (Chronologie) LectureEcriture.lecture(chSer);
+        	
         PanelChronoDiapo panelChronoDiapo = new PanelChronoDiapo(chronologie);
         PanelFormulaire panelFormulaire = new PanelFormulaire(chronologie);
 
@@ -46,7 +45,7 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
 
         panelChronoDiapo.getPanelDiapo().getChNomJLabel().setText(chronologie.getNom());
 
-        new Controler(this,panelChronoDiapo, panelFormulaire, ser, chronologie, panelCreation);
+        new Controler(this,panelChronoDiapo, panelFormulaire, chSer, chronologie, panelCreation);
 
     }
 
