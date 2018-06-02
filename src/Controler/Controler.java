@@ -79,7 +79,7 @@ public class Controler implements ActionListener, Data {
 			chPanelChronoDiapo.resetDiapo(chChronologie);
 			chPanelChronoDiapo.getPanelDiapo().getChNomJLabel().setText(chChronologie.getNom());
 			
-			chPanelsFils.getCardLayout().show(chPanelsFils.getFenetreMere().getPanelsFils(),  NOMMENU[1]);
+			chPanelsFils.getCardLayout().show(chPanelsFils.getFenetreMere().getPanelsFils(),  NOMSOUSMENU2[1]);
 			
 		}
 
@@ -98,7 +98,7 @@ public class Controler implements ActionListener, Data {
 			chPanelChronoDiapo.resetDiapo(chChronologie);
 			chPanelChronoDiapo.getPanelDiapo().getChNomJLabel().setText(chChronologie.getNom());
 			chPanelsFils.getFenetreMere().chMenuBar.setVisible(true);
-			chPanelsFils.getCardLayout().show(chPanelsFils.getFenetreMere().getPanelsFils(),  NOMMENU[0]);
+			chPanelsFils.getCardLayout().show(chPanelsFils.getFenetreMere().getPanelsFils(),  NOMSOUSMENU2[0]);
 		}
 
 	}

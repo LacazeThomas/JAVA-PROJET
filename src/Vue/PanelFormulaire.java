@@ -43,41 +43,47 @@ public class PanelFormulaire extends JPanel implements Data {
         contrainte.gridx = 1;
         contrainte.gridy = 1;
         contrainte.insets = new Insets(10, 0, 0, 0);
-        contrainte.anchor = GridBagConstraints.WEST;
+        contrainte.anchor = GridBagConstraints.EAST;
         JLabel formulaireAjoutJLabel = new JLabel("Formulaire Ajout:");
         formulaireAjoutJLabel.setDisplayedMnemonic(KeyEvent.VK_F);
         this.add(formulaireAjoutJLabel, contrainte);
        
 
 
-        contrainte.gridx = 4;
+        contrainte.gridwidth = 3;
+        contrainte.gridx = 2;
         contrainte.gridy = 1;
+        contrainte.anchor = GridBagConstraints.WEST;
         formulaireAjoutJLabel.setLabelFor(chAjoutJButton);
         this.add(chAjoutJButton, contrainte);
 
         contrainte.gridx = 1;
         contrainte.gridy = 2;
+        contrainte.gridwidth = 1;
         JLabel titreEventJLabel = new JLabel("Titre:");
         titreEventJLabel.setDisplayedMnemonic(KeyEvent.VK_T);
         this.add(titreEventJLabel, contrainte);
         
 
         contrainte.gridx = 2;
+        contrainte.gridwidth = 3;
         contrainte.gridy = 2;
         titreEventJLabel.setLabelFor(chTitreJTextArea);
         this.add(chTitreJTextArea, contrainte);
-        contrainte.gridwidth = 1;
+        contrainte.gridwidth = 3;
         contrainte.gridheight = 1;
         
 
         contrainte.gridx = 1;
         contrainte.gridy = 3;
+        contrainte.gridwidth = 1;
         JLabel texteEventJLabel = new JLabel("Texte:") ;
         texteEventJLabel.setDisplayedMnemonic(KeyEvent.VK_E);
         this.add(texteEventJLabel, contrainte);
 
         contrainte.gridx = 2;
         contrainte.gridy = 3;
+        contrainte.gridwidth = 3;
         
         
         JPanel panel = new JPanel();
@@ -87,10 +93,12 @@ public class PanelFormulaire extends JPanel implements Data {
         JScrollPane scroll = new JScrollPane(chTexteJTextArea);
         panel.add(scroll, BorderLayout.CENTER);
         
+        
+        
         texteEventJLabel.setLabelFor(chTexteJTextArea);
         this.add(panel, contrainte);
         
-        
+        contrainte.gridwidth = 1;
         contrainte.gridx = 1;
         contrainte.gridy = 4;
         JLabel AnneeJComboBox =new JLabel("Date:");
@@ -98,6 +106,7 @@ public class PanelFormulaire extends JPanel implements Data {
         this.add(AnneeJComboBox, contrainte);
 
         contrainte.gridx = 2;
+        contrainte.gridwidth = 1;
         contrainte.gridy = 4;
 
         if (chChronologie.getFin() != 0) {
@@ -120,6 +129,7 @@ public class PanelFormulaire extends JPanel implements Data {
         chDateMoisJCombobox = new JComboBox(moisStrings);
         contrainte.gridx = 3;
         contrainte.gridy = 4;
+        contrainte.gridwidth = 1;
         this.add(chDateMoisJCombobox, contrainte);
 
         String[] joursStrings = new String[31];
@@ -127,12 +137,14 @@ public class PanelFormulaire extends JPanel implements Data {
             joursStrings[i] = i + 1 + "";
         }
         chDateJoursJCombobox = new JComboBox(joursStrings);
+        contrainte.gridwidth = 1;
         contrainte.gridx = 4;
         contrainte.gridy = 4;
         this.add(chDateJoursJCombobox, contrainte);
 
         contrainte.gridx = 1;
         contrainte.gridy = 5;
+        contrainte.gridwidth = 1;
         JLabel PoidsEvenementJLabel = new JLabel("Poids:");
         PoidsEvenementJLabel.setDisplayedMnemonic(KeyEvent.VK_P);
         this.add(PoidsEvenementJLabel, contrainte);
@@ -144,13 +156,13 @@ public class PanelFormulaire extends JPanel implements Data {
 
         contrainte.gridx = 1;
         contrainte.gridy = 6;
+        contrainte.gridwidth = 1;
         JLabel ImageEvenementJLabel = new JLabel("Image");
         ImageEvenementJLabel.setDisplayedMnemonic(KeyEvent.VK_I);
         this.add(ImageEvenementJLabel, contrainte);
 
         contrainte.gridx = 2;
         contrainte.gridy = 6;
-        contrainte.gridwidth = 3;
         ImageEvenementJLabel.setLabelFor(chImageJButton);
         this.add(chImageJButton, contrainte);
 
