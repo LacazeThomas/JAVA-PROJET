@@ -98,7 +98,7 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
     }
 
     public void reset(FenetreMere parFenetreMere, File parSer) {
-    	
+    	getFenetreMere().chMenuBar.setVisible(false);
     	chFenetreMere = parFenetreMere;
     	chSer = parSer;
     	
