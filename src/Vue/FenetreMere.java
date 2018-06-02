@@ -29,7 +29,7 @@ public class FenetreMere extends JFrame implements Data {
 
         setContentPane(chPanelsFils);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setSize(1350,700);
         setVisible(true);
 
         setLocation(0, 0);

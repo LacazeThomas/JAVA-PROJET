@@ -3,6 +3,7 @@ package Vue;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -45,8 +46,22 @@ public class PanelDiapo extends JPanel implements Data, ActionListener {
 			panelCentre.add(label, s.toString());
 		}
 		add(panelCentre, BorderLayout.CENTER);
-
-		add(chSuivantJButton, BorderLayout.EAST);
+		chSuivantJButton.setBorderPainted(false);
+		chSuivantJButton.setOpaque(false);
+		chSuivantJButton.setContentAreaFilled(false);
+		chSuivantJButton.setBorderPainted(false);
+		
+		
+		chPrecedentJButton.setBorderPainted(false);
+		chPrecedentJButton.setOpaque(false);
+		chPrecedentJButton.setContentAreaFilled(false);
+		chPrecedentJButton.setBorderPainted(false);
+		
+		
+		chPrecedentJButton.setFont(new Font("Arial", Font.PLAIN, 40));
+		chSuivantJButton.setFont(new Font("Arial", Font.PLAIN, 40));
+		
+	    add(chSuivantJButton, BorderLayout.EAST);
 		add(chPrecedentJButton, BorderLayout.WEST);
 
 		chSuivantJButton.addActionListener(this);

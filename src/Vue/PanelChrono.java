@@ -24,7 +24,7 @@ public class PanelChrono extends JPanel {
 
         chTable = new JTable(modele);
 
-        chTable.setPreferredScrollableViewportSize(new Dimension(1300, 170));
+        chTable.setPreferredScrollableViewportSize(new Dimension(1300, 200));
         chTable.setRowHeight(50);
         chTable.setFillsViewportHeight(true);
 

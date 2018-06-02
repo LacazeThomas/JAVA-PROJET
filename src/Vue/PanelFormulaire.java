@@ -64,7 +64,6 @@ public class PanelFormulaire extends JPanel implements Data {
 
         contrainte.gridx = 2;
         contrainte.gridy = 2;
-        contrainte.gridwidth = 3;
         titreEventJLabel.setLabelFor(chTitreJTextArea);
         this.add(chTitreJTextArea, contrainte);
         contrainte.gridwidth = 1;
@@ -82,12 +81,11 @@ public class PanelFormulaire extends JPanel implements Data {
         
         
         JPanel panel = new JPanel();
-        panel.setLayout(new BorderLayout());  //give your JPanel a BorderLayout
+        panel.setLayout(new BorderLayout());
 
 
-        JScrollPane scroll = new JScrollPane(chTexteJTextArea); //place the JTextArea in a scroll pane
-        panel.add(scroll, BorderLayout.CENTER); //add the JScrollPane to the panel
-        // CENTER will use up all available space
+        JScrollPane scroll = new JScrollPane(chTexteJTextArea);
+        panel.add(scroll, BorderLayout.CENTER);
         
         texteEventJLabel.setLabelFor(chTexteJTextArea);
         this.add(panel, contrainte);
@@ -152,11 +150,13 @@ public class PanelFormulaire extends JPanel implements Data {
 
         contrainte.gridx = 2;
         contrainte.gridy = 6;
+        contrainte.gridwidth = 3;
         ImageEvenementJLabel.setLabelFor(chImageJButton);
         this.add(chImageJButton, contrainte);
 
         contrainte.gridx = 1;
         contrainte.gridy = 7;
+        contrainte.gridwidth = 1;  
         this.add(chImageConfirmationJLabel, contrainte);
 
         contrainte.gridx = 2;

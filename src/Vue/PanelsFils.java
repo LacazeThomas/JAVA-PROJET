@@ -34,7 +34,6 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
             add(panelCreation, "Creation");
             gestionnaireDesCartes.show(this, "Creation");
             chronologie = new Chronologie();
-            // PanelCreationdelaChronologie
 
         } else
             chronologie = (Chronologie) LectureEcriture.lecture(ser);
