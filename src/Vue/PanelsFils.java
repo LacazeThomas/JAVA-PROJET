@@ -38,7 +38,7 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
         Chronologie chronologie;
         if (chSer.length() == 0) {
             add(panelCreation, "Creation");
-            gestionnaireDesCartes.show(this, "Creation");
+            gestionnaireDesCartes.show(this, "Ajout");
             chronologie = new Chronologie();
 
         } else
@@ -98,7 +98,6 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
     }
 
     public void reset(FenetreMere parFenetreMere, File parSer) {
-    	getFenetreMere().chMenuBar.setVisible(false);
     	chFenetreMere = parFenetreMere;
     	chSer = parSer;
     	
@@ -108,8 +107,9 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
 
         Chronologie chronologie;
         if (parSer.length() == 0) {
+        	getFenetreMere().chMenuBar.setVisible(false);
             add(panelCreation, "Creation");
-            gestionnaireDesCartes.show(this, "Creation");
+            gestionnaireDesCartes.show(this, "Ajout");
             chronologie = new Chronologie();
 
         } else {

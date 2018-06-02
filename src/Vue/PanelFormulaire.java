@@ -35,7 +35,6 @@ public class PanelFormulaire extends JPanel implements Data {
 
     public PanelFormulaire(Chronologie parChronologie) {
         chChronologie = parChronologie;
-
         setLayout(new GridBagLayout());
         GridBagConstraints contrainte = new GridBagConstraints();
         contrainte.gridheight = 1;
@@ -43,7 +42,7 @@ public class PanelFormulaire extends JPanel implements Data {
         contrainte.gridx = 1;
         contrainte.gridy = 1;
         contrainte.insets = new Insets(10, 0, 0, 0);
-        contrainte.anchor = GridBagConstraints.EAST;
+        contrainte.anchor = GridBagConstraints.WEST;
         JLabel formulaireAjoutJLabel = new JLabel("Formulaire Ajout:");
         formulaireAjoutJLabel.setDisplayedMnemonic(KeyEvent.VK_F);
         this.add(formulaireAjoutJLabel, contrainte);
@@ -51,15 +50,16 @@ public class PanelFormulaire extends JPanel implements Data {
 
 
         contrainte.gridwidth = 3;
-        contrainte.gridx = 2;
+        contrainte.gridx = 4;
         contrainte.gridy = 1;
-        contrainte.anchor = GridBagConstraints.WEST;
+        contrainte.anchor = GridBagConstraints.EAST;
         formulaireAjoutJLabel.setLabelFor(chAjoutJButton);
         this.add(chAjoutJButton, contrainte);
 
         contrainte.gridx = 1;
         contrainte.gridy = 2;
         contrainte.gridwidth = 1;
+        contrainte.anchor = GridBagConstraints.WEST;
         JLabel titreEventJLabel = new JLabel("Titre:");
         titreEventJLabel.setDisplayedMnemonic(KeyEvent.VK_T);
         this.add(titreEventJLabel, contrainte);
@@ -68,6 +68,7 @@ public class PanelFormulaire extends JPanel implements Data {
         contrainte.gridx = 2;
         contrainte.gridwidth = 3;
         contrainte.gridy = 2;
+        contrainte.anchor = GridBagConstraints.EAST;
         titreEventJLabel.setLabelFor(chTitreJTextArea);
         this.add(chTitreJTextArea, contrainte);
         contrainte.gridwidth = 3;
@@ -77,6 +78,7 @@ public class PanelFormulaire extends JPanel implements Data {
         contrainte.gridx = 1;
         contrainte.gridy = 3;
         contrainte.gridwidth = 1;
+        contrainte.anchor = GridBagConstraints.WEST;
         JLabel texteEventJLabel = new JLabel("Texte:") ;
         texteEventJLabel.setDisplayedMnemonic(KeyEvent.VK_E);
         this.add(texteEventJLabel, contrainte);
@@ -91,6 +93,7 @@ public class PanelFormulaire extends JPanel implements Data {
 
 
         JScrollPane scroll = new JScrollPane(chTexteJTextArea);
+        contrainte.anchor = GridBagConstraints.EAST;
         panel.add(scroll, BorderLayout.CENTER);
         
         
@@ -101,10 +104,11 @@ public class PanelFormulaire extends JPanel implements Data {
         contrainte.gridwidth = 1;
         contrainte.gridx = 1;
         contrainte.gridy = 4;
-        JLabel AnneeJComboBox =new JLabel("Date:");
-        AnneeJComboBox.setDisplayedMnemonic(KeyEvent.VK_D);
-        this.add(AnneeJComboBox, contrainte);
-
+        JLabel AnneeJLabel =new JLabel("Date:");
+        contrainte.anchor = GridBagConstraints.WEST;
+        AnneeJLabel.setDisplayedMnemonic(KeyEvent.VK_D);
+        this.add(AnneeJLabel, contrainte);
+        
         contrainte.gridx = 2;
         contrainte.gridwidth = 1;
         contrainte.gridy = 4;
@@ -119,7 +123,9 @@ public class PanelFormulaire extends JPanel implements Data {
         } else {
             chDateAnneeJCombobox = new JComboBox();
         }
-        AnneeJComboBox.setLabelFor(chDateAnneeJCombobox);
+
+        AnneeJLabel.setLabelFor(chDateAnneeJCombobox);
+        contrainte.anchor = GridBagConstraints.WEST;
         this.add(chDateAnneeJCombobox, contrainte);
 
         String[] moisStrings = new String[12];
@@ -130,6 +136,7 @@ public class PanelFormulaire extends JPanel implements Data {
         contrainte.gridx = 3;
         contrainte.gridy = 4;
         contrainte.gridwidth = 1;
+        contrainte.anchor = GridBagConstraints.WEST;
         this.add(chDateMoisJCombobox, contrainte);
 
         String[] joursStrings = new String[31];
@@ -140,29 +147,34 @@ public class PanelFormulaire extends JPanel implements Data {
         contrainte.gridwidth = 1;
         contrainte.gridx = 4;
         contrainte.gridy = 4;
+        contrainte.anchor = GridBagConstraints.EAST;
         this.add(chDateJoursJCombobox, contrainte);
 
         contrainte.gridx = 1;
         contrainte.gridy = 5;
         contrainte.gridwidth = 1;
         JLabel PoidsEvenementJLabel = new JLabel("Poids:");
+        contrainte.anchor = GridBagConstraints.WEST;
         PoidsEvenementJLabel.setDisplayedMnemonic(KeyEvent.VK_P);
         this.add(PoidsEvenementJLabel, contrainte);
 
-        contrainte.gridx = 2;
+        contrainte.gridx = 4;
         contrainte.gridy = 5;
+        contrainte.anchor = GridBagConstraints.EAST;
         PoidsEvenementJLabel.setLabelFor(chPoidsJComboBox);
         this.add(chPoidsJComboBox, contrainte);
 
         contrainte.gridx = 1;
         contrainte.gridy = 6;
         contrainte.gridwidth = 1;
-        JLabel ImageEvenementJLabel = new JLabel("Image");
+        JLabel ImageEvenementJLabel = new JLabel("Image:");
+        contrainte.anchor = GridBagConstraints.WEST;
         ImageEvenementJLabel.setDisplayedMnemonic(KeyEvent.VK_I);
         this.add(ImageEvenementJLabel, contrainte);
 
-        contrainte.gridx = 2;
+        contrainte.gridx = 4;
         contrainte.gridy = 6;
+        contrainte.anchor = GridBagConstraints.EAST;
         ImageEvenementJLabel.setLabelFor(chImageJButton);
         this.add(chImageJButton, contrainte);
 
