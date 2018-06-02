@@ -9,8 +9,11 @@ import javax.swing.JMenuItem;
 import Model.Data;
 
 public class FenetreMere extends JFrame implements Data {
+
+	PanelsFils chPanelsFils;
+	
     public FenetreMere() {
-        PanelsFils contentPane = new PanelsFils();
+    	chPanelsFils = new PanelsFils(this);
 
         JMenuBar menuBar = new JMenuBar();
         this.setJMenuBar(menuBar);
@@ -20,11 +23,11 @@ public class FenetreMere extends JFrame implements Data {
         for (int i = 0; i < NOMMENU.length; i++) {
             JMenuItem menuItem = new JMenuItem(NOMMENU[i]);
             menuBar.add(menuItem);
-            menuItem.addActionListener(contentPane);
+            menuItem.addActionListener(chPanelsFils);
             menuItem.setActionCommand(NOMMENU[i]);
         }
 
-        setContentPane(contentPane);
+        setContentPane(chPanelsFils);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
@@ -32,6 +35,10 @@ public class FenetreMere extends JFrame implements Data {
         setLocation(0, 0);
     }
 
+    public PanelsFils getPanelsFils() {
+    	return chPanelsFils;
+    }
+    
     public static void main(String[] args) {
         new FenetreMere();
     }

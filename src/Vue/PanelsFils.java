@@ -14,9 +14,14 @@ import Model.LectureEcriture;
 
 public class PanelsFils extends JPanel implements ActionListener, Data {
 
-    private CardLayout gestionnaireDesCartes = new CardLayout();
+    private static CardLayout gestionnaireDesCartes = new CardLayout();
 
-    public PanelsFils() {
+    FenetreMere chFenetreMere;
+    
+    public PanelsFils(FenetreMere parFenetreMere) {
+    	
+    	chFenetreMere = parFenetreMere;
+    	
         setLayout(gestionnaireDesCartes);
 
         PanelCreation panelCreation = new PanelCreation();
@@ -42,7 +47,7 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
 
         panelChronoDiapo.getPanelDiapo().getChNomJLabel().setText(chronologie.getNom());
 
-        new Controler(panelChronoDiapo, panelFormulaire, ser, chronologie, panelCreation);
+        new Controler(this,panelChronoDiapo, panelFormulaire, ser, chronologie, panelCreation);
 
     }
 
@@ -59,6 +64,17 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
         if (parEvt.getActionCommand() == NOMMENU[1]) {
             gestionnaireDesCartes.show(this, NOMMENU[1]);
         }
+    }
+    
+    
+    public CardLayout getCardLayout() {
+    	return gestionnaireDesCartes;
+    	
+    }
+ 
+    
+    public FenetreMere getFenetreMere() {
+    	return chFenetreMere;
     }
 
 }

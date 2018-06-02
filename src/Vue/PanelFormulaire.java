@@ -22,8 +22,8 @@ public class PanelFormulaire extends JPanel implements Data {
 
     private JButton chAjoutJButton = new JButton("+");
     private Chronologie chChronologie = new Chronologie();
-    private JTextArea chTitreJTextArea = new JTextArea("", 1, 10);
-    private JTextArea chTexteJTextArea = new JTextArea("", 6 ,25);
+    private JTextArea chTitreJTextArea = new JTextArea("", 1, 30);
+    private JTextArea chTexteJTextArea = new JTextArea("", 6 ,30);
     private JComboBox chDateAnneeJCombobox;
     private JComboBox chDateMoisJCombobox;
     private JComboBox chDateJoursJCombobox;
@@ -48,7 +48,9 @@ public class PanelFormulaire extends JPanel implements Data {
         formulaireAjoutJLabel.setDisplayedMnemonic(KeyEvent.VK_F);
         this.add(formulaireAjoutJLabel, contrainte);
        
-        contrainte.gridx = 2;
+
+
+        contrainte.gridx = 4;
         contrainte.gridy = 1;
         formulaireAjoutJLabel.setLabelFor(chAjoutJButton);
         this.add(chAjoutJButton, contrainte);
@@ -62,8 +64,11 @@ public class PanelFormulaire extends JPanel implements Data {
 
         contrainte.gridx = 2;
         contrainte.gridy = 2;
+        contrainte.gridwidth = 3;
         titreEventJLabel.setLabelFor(chTitreJTextArea);
         this.add(chTitreJTextArea, contrainte);
+        contrainte.gridwidth = 1;
+        contrainte.gridheight = 1;
         
 
         contrainte.gridx = 1;

@@ -1,6 +1,7 @@
 package Controler;
 
 import java.awt.Image;
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -18,6 +19,7 @@ import Vue.PanelChronoDiapo;
 import Vue.PanelCreation;
 import Vue.PanelDiapo;
 import Vue.PanelFormulaire;
+import Vue.PanelsFils;
 
 public class Controler implements ActionListener, Data {
 
@@ -26,10 +28,13 @@ public class Controler implements ActionListener, Data {
 	private Chronologie chChronologie;
 	private PanelCreation chPanelCreation;
 	private PanelChronoDiapo chPanelChronoDiapo;
+	private PanelsFils chPanelsFils;
 
-	public Controler(PanelChronoDiapo parPanelChronoDiapo, PanelFormulaire parPanelFormulaire, File parFile,
+	public Controler(PanelsFils parPanelsFils, PanelChronoDiapo parPanelChronoDiapo, PanelFormulaire parPanelFormulaire, File parFile,
 			Chronologie parChronologie, PanelCreation parPanelCreation) {
 		panelFormulaire = parPanelFormulaire;
+		
+		chPanelsFils = parPanelsFils;
 		panelFormulaire.enregistreEcouteur(this);
 		chFile = parFile;
 		chChronologie = parChronologie;
@@ -73,6 +78,9 @@ public class Controler implements ActionListener, Data {
 
 			chPanelChronoDiapo.resetDiapo(chChronologie);
 			chPanelChronoDiapo.getPanelDiapo().getChNomJLabel().setText(chChronologie.getNom());
+			
+			chPanelsFils.getCardLayout().show(chPanelsFils.getFenetreMere().getPanelsFils(),  NOMMENU[1]);
+			
 		}
 
 		if (parEvt.getActionCommand() == "CreationAjout") {
@@ -89,6 +97,8 @@ public class Controler implements ActionListener, Data {
 			LectureEcriture.ecriture(chFile, chChronologie);
 			chPanelChronoDiapo.resetDiapo(chChronologie);
 			chPanelChronoDiapo.getPanelDiapo().getChNomJLabel().setText(chChronologie.getNom());
+			
+			chPanelsFils.getCardLayout().show(chPanelsFils.getFenetreMere().getPanelsFils(),  NOMMENU[0]);
 		}
 
 	}
