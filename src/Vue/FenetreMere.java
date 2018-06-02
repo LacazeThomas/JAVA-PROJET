@@ -24,15 +24,11 @@ public class FenetreMere extends JFrame implements Data {
     	
         File ser = new File("save" + File.separator + "chronologie.ser");
             
-        
-        if (ser.length() == 0) {
-        	chMenuBar.setVisible(false);
-        }
+    
         	
     	
     	
     	chPanelsFils = new PanelsFils(this,ser);
-    	
     	chMenuBar = new JMenuBar();
         this.setJMenuBar(chMenuBar);
 
@@ -48,9 +44,13 @@ public class FenetreMere extends JFrame implements Data {
         setContentPane(chPanelsFils);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1350,700);
-        setVisible(true)
-      ;
+        setVisible(true);
 
+        if (ser.length() == 0) {
+        	chMenuBar.setVisible(false);
+        	System.out.print("ghlhsdkl");
+        }
+        
         setLocation(0, 0);
     }
 
