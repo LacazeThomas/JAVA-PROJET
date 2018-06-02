@@ -24,10 +24,6 @@ public class FenetreMere extends JFrame implements Data {
     	
         File ser = new File("save" + File.separator + "chronologie.ser");
             
-    
-        	
-    	
-    	
     	chPanelsFils = new PanelsFils(this,ser);
     	chMenuBar = new JMenuBar();
         this.setJMenuBar(chMenuBar);
