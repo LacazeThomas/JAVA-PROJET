@@ -46,6 +46,7 @@ public class PanelDiapo extends JPanel implements Data, ActionListener {
 			chPanelCentre.add(label, s.toString());
 		}
 		add(chPanelCentre, BorderLayout.CENTER);
+		//On modifie les boutons en affichant uniquement les fleches et rien d'autre
 		chSuivantJButton.setBorderPainted(false);
 		chSuivantJButton.setOpaque(false);
 		chSuivantJButton.setContentAreaFilled(false);
@@ -62,6 +63,7 @@ public class PanelDiapo extends JPanel implements Data, ActionListener {
 		add(chSuivantJButton, BorderLayout.EAST);
 		add(chPrecedentJButton, BorderLayout.WEST);
 
+		//On affecte des actions aux boutons
 		chSuivantJButton.addActionListener(this);
 		chSuivantJButton.setActionCommand("Suivant");
 		chPrecedentJButton.addActionListener(this);
@@ -72,12 +74,15 @@ public class PanelDiapo extends JPanel implements Data, ActionListener {
 	public void actionPerformed(ActionEvent parEvt) {
 		if (parEvt.getActionCommand() == "Suivant") {
 			chGestionnaireDesCartes.next(chPanelCentre);
+
+			//on récupere le diapo courant
 			JLabelDescription card = null;
 			for (Component comp : chPanelCentre.getComponents()) {
 				if (comp.isVisible() == true) {
 					card = (JLabelDescription) comp;
 				}
 			}
+			//Puis on deplace la scrollbar juste le bon identificateur
 			PanelChrono.goToCell(card.getEvt().getDate().getAnnee() - chChronologie.getDebut());
 		}
 		if (parEvt.getActionCommand() == "Precedent") {

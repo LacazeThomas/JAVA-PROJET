@@ -11,7 +11,9 @@ public class PanelChronoDiapo extends JPanel {
 	private PanelDiapo chpanelDiapo;
 	private PanelChrono chpanelChrono;
 	private BorderLayout chBorderLayout = new BorderLayout();
-
+	/**
+	 * Panel qui regroupe le diapo et la chrono et permet d'être reset en cas de modification
+	 */
 	public PanelChronoDiapo(Chronologie parchronologie) {
 		setLayout(chBorderLayout);
 		chpanelDiapo = new PanelDiapo(parchronologie);

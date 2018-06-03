@@ -34,12 +34,14 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
         chPanelCreation = new PanelCreation();
 
         Chronologie chronologie;
+        //Si le fichier n'existe pas alors on affiche le menu creation
         if (chSer.length() == 0) {
             add(chPanelCreation, "Creation");
             gestionnaireDesCartes.show(this, "Creation");
             chronologie = new Chronologie();
 
         } else
+            //Si affecter à la chronologie la lecture
             chronologie = (Chronologie) LectureEcriture.lecture(chSer);
 
         chPanelChronoDiapo = new PanelChronoDiapo(chronologie);
@@ -55,7 +57,7 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
     }
 
     public void actionPerformed(ActionEvent parEvt) {
-
+        /**Permet l'action des menus  */
         if (parEvt.getActionCommand() == NOMSOUSMENU2[2]) {
             System.exit(0);
         }
@@ -69,12 +71,15 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
         }
 
         if (parEvt.getActionCommand() == NOMSOUSMENU1[0]) {
+
+            //On charge ou creation d'un fichier
+
             chChooser.setCurrentDirectory(new java.io.File("save/."));
             chChooser.setDialogTitle("Choisir une chronologie");
             chChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
             chChooser.setAcceptAllFileFilterUsed(false);
 
-            if (chChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) { // Parce que le java
+            if (chChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                 System.out.println(chChooser.getSelectedFile().getName().toString());
                 chSer = new File("save" + File.separator + chChooser.getSelectedFile().getName().toString());
                 reset(chFenetreMere, chSer);
@@ -93,6 +98,7 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
         return chFenetreMere;
     }
 
+    /**Permet de reset s'il y a modification et permet en plus de supprimer le menu en haut pour faciliter la comprehension */
     public void reset(FenetreMere parFenetreMere, File parSer) {
         chFenetreMere = parFenetreMere;
         chSer = parSer;

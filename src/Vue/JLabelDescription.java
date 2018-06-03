@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Model.Evenement;
-
+/** Cet héritage de jlabel permet d'ajouter une image a côté d'un texte*/
 public class JLabelDescription extends JLabel {
 
     private Evenement chEvenement;
@@ -18,12 +18,14 @@ public class JLabelDescription extends JLabel {
 
         String DescriptionStringTokenizer = new String();
 
+        //On mets un espace tous les 12 mots 
         StringTokenizer st = new StringTokenizer(parEvt.getTexte());
         int retourligne = 0;
         while (st.hasMoreTokens()) {
             retourligne++;
             DescriptionStringTokenizer += st.nextToken() + " ";
             if (retourligne == 12) {
+                //Si on est au 12eme mots alors on mets un retour à la ligne et ton retourne au premier mot
                 DescriptionStringTokenizer += "<br/>";
                 retourligne = 0;
             }
