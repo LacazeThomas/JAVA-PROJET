@@ -6,6 +6,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
+import javax.xml.ws.AsyncHandler;
+
 public class Chronologie implements Serializable {
 	private ArrayList<Evenement> chListe = new ArrayList();
 	//HashMap qui contient tous les evenements
@@ -49,14 +51,12 @@ public class Chronologie implements Serializable {
 	}
 
 	public void ajout(Evenement parEvt) throws ExceptionChronologie{
-		//On recupe le numeros de semaine qui est l'indentificateur du chMap
-		GregorianCalendar aujoudhui = new GregorianCalendar(parEvt.getDate().getAnnee(), parEvt.getDate().getMois() - 1,
-				parEvt.getDate().getJour());
-		int numsemaine = aujoudhui.get(Calendar.WEEK_OF_YEAR);
-
 		//S'il y a deja un evenement
-		if (chMap.containsKey(numsemaine) == true) {
-			ArrayList<Evenement> list = chMap.get(numsemaine);
+		//La HashMap utilise comme key l'année de l'evenement
+		if (chMap.containsKey(parEvt.getDate().getAnnee()) == true) {
+			ArrayList<Evenement> list = chMap.get(parEvt.getDate().getAnnee());
+			
+			//On parcours l'annee en question est on regarde s'il y a deja un evenement avec ce poids
 			for (Evenement s : list) {
 				if(s.getPoids() == parEvt.getPoids()){
 					throw new ExceptionChronologie("Erreur un evenement existe déjà à cette année et ce poids!");
@@ -66,7 +66,7 @@ public class Chronologie implements Serializable {
 		} else {
 			ArrayList<Evenement> list = new ArrayList();
 			list.add(parEvt);
-			chMap.put(numsemaine, list);
+			chMap.put(parEvt.getDate().getAnnee(), list);
 		}
 
 		chListe.add(parEvt);
