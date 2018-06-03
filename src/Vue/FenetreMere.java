@@ -16,25 +16,33 @@ public class FenetreMere extends JFrame implements Data {
     public JMenuBar chMenuBar;
 
     public FenetreMere() {
+        //On nomme la fenetre
         setTitle("Frise chronologique");
         chMenuBar = new JMenuBar();
         this.setJMenuBar(chMenuBar);
 
-        File ser = new File("save" + File.separator + "chronologie.ser");
+        //Par default on charge la sauvegarde demo
+        File ser = new File("save" + File.separator + "demo.ser");
 
+        //On appelle le panelFils avec le fichier de sauvegarde
         chPanelsFils = new PanelsFils(this, ser);
+        //On crée le menubar
         chMenuBar = new JMenuBar();
         this.setJMenuBar(chMenuBar);
 
+        //On l'aligne à gauche
         chMenuBar.setLayout(new FlowLayout(FlowLayout.LEFT));
 
+        //On crée trois menu
         JMenu[] menu = new JMenu[3];
 
+        //On leur donne un nom
         for (int i = 0; i < NOMMENU.length; i++) {
             menu[i] = new JMenu(NOMMENU[i]);
             chMenuBar.add(menu[i]);
         }
 
+        //On crée les sous menus
         for (int i = 0; i < NOMSOUSMENU1.length; i++) {
             JMenuItem menuItem = new JMenuItem(NOMSOUSMENU1[i]);
             menu[0].add(menuItem);
@@ -49,6 +57,7 @@ public class FenetreMere extends JFrame implements Data {
             menuItem.setActionCommand(NOMSOUSMENU2[i]);
         }
 
+        //Puis on fait la meme chose avec le dernier menu "quitter"
         JMenuItem menuItem = new JMenuItem(NOMSOUSMENU2[2]);
         menu[2].add(menuItem);
         menuItem.addActionListener(chPanelsFils);
@@ -59,12 +68,12 @@ public class FenetreMere extends JFrame implements Data {
         setSize(1350, 700);
         setVisible(true);
 
+        //Si le fichier n'existe pas alors on enleve le menu pour facilier la compréhension
         if (ser.length() == 0) {
             chMenuBar.setVisible(false);
-            System.out.print("ghlhsdkl");
         }
 
-        setLocation(0, 0);
+        setLocation(100, 100);
     }
 
     public PanelsFils getPanelsFils() {

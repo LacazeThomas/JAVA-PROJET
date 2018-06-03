@@ -38,12 +38,14 @@ public class Chronologie implements Serializable {
 		chNom = parNom;
 	}
 
-	public void setDebut(int parDebut) {
-		chDebut = parDebut;
-	}
+	public void setDebutFin(int parDebut, int parFin) throws ExceptionChronologie {
+		if(parDebut > parFin)
+			throw new ExceptionChronologie("Erreur la date de fin est plus petite que la date de debut");
+		else{
+			chDebut = parDebut;
+			chFin = parFin;
+		}
 
-	public void setFin(int parFin) {
-		chFin = parFin;
 	}
 
 	public void ajout(Evenement parEvt) {

@@ -7,11 +7,13 @@ import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 import Model.Chronologie;
 import Model.Data;
 import Model.Date;
 import Model.Evenement;
+import Model.ExceptionChronologie;
 import Model.LectureEcriture;
 import Vue.PanelChronoDiapo;
 import Vue.PanelCreation;
@@ -72,32 +74,40 @@ public class Controler implements ActionListener, Data {
 			 * On ajout d'un evenement dans la chronologie en remplisant tous les champs
 			 * qu'il a besoin
 			 */
-			Date testdate = new Date();
-			testdate.setJour(
-					Integer.parseInt(chPanelFormulaire.getChDateJoursJCombobox().getSelectedItem().toString()));
-			testdate.setMois(Integer.parseInt(chPanelFormulaire.getChDateMoisJCombobox().getSelectedItem().toString()));
-			testdate.setAnnee(
-					Integer.parseInt(chPanelFormulaire.getChDateAnneeJCombobox().getSelectedItem().toString()));
 
-			Evenement testEvt = new Evenement(testdate, chPanelFormulaire.getChTitreJTextArea().getText(),
-					chPanelFormulaire.getChTexteJTextArea().getText(),
-					chPanelFormulaire.getChooser().getSelectedFile().getName().toString(),
-					Integer.parseInt(chPanelFormulaire.getChPoidsJComboBox().getSelectedItem().toString()));
 
-			/** On ajout d'evement instancier avant */
-			chChronologie.ajout(testEvt);
-			/** On save garde la frise */
-			LectureEcriture.ecriture(chFile, chChronologie);
-
-			/** On reset le diapo et la chronologie car il y a eu des changements. */
-			chPanelChronoDiapo.resetDiapo(chChronologie);
-			/** Puis on remet le nom de la frise */
-			chPanelChronoDiapo.getPanelDiapo().getChNomJLabel().setText(chChronologie.getNom());
-			/**
-			 * Puis on le déplace automatiquement sur le menu affichage pour qu'il puisse
-			 * observer ses modifications
-			 */
-			chPanelsFils.getCardLayout().show(chPanelsFils.getFenetreMere().getPanelsFils(), NOMSOUSMENU2[1]);
+			try {
+				Date testdate = new Date();
+				testdate.setJour(
+						Integer.parseInt(chPanelFormulaire.getChDateJoursJCombobox().getSelectedItem().toString()));
+				testdate.setMois(Integer.parseInt(chPanelFormulaire.getChDateMoisJCombobox().getSelectedItem().toString()));
+				testdate.setAnnee(
+						Integer.parseInt(chPanelFormulaire.getChDateAnneeJCombobox().getSelectedItem().toString()));
+	
+				Evenement testEvt = new Evenement(testdate, chPanelFormulaire.getChTitreJTextArea().getText(),
+						chPanelFormulaire.getChTexteJTextArea().getText(),
+						chPanelFormulaire.getChooser().getSelectedFile().getName().toString(),
+						Integer.parseInt(chPanelFormulaire.getChPoidsJComboBox().getSelectedItem().toString()));
+	
+				/** On ajout d'evement instancier avant */
+				chChronologie.ajout(testEvt);
+				/** On save garde la frise */
+				LectureEcriture.ecriture(chFile, chChronologie);
+	
+				/** On reset le diapo et la chronologie car il y a eu des changements. */
+				chPanelChronoDiapo.resetDiapo(chChronologie);
+				/** Puis on remet le nom de la frise */
+				chPanelChronoDiapo.getPanelDiapo().getChNomJLabel().setText(chChronologie.getNom());
+				/**
+				 * Puis on le déplace automatiquement sur le menu affichage pour qu'il puisse
+				 * observer ses modifications
+				 */
+				chPanelsFils.getCardLayout().show(chPanelsFils.getFenetreMere().getPanelsFils(), NOMSOUSMENU2[1]);
+			  }
+			  catch (NullPointerException e) {
+				JOptionPane.showMessageDialog(null, "Veuillez renseigner tous les champs!");
+			  }
+			
 
 		}
 
@@ -107,34 +117,40 @@ public class Controler implements ActionListener, Data {
 			 * fin
 			 */
 			chChronologie.setNom(chPanelCreation.getChTitreJTextField().getText());
-			chChronologie.setDebut(Integer.parseInt(chPanelCreation.getChDateDebutJTextField().getText()));
-			chChronologie.setFin(Integer.parseInt(chPanelCreation.getChDateFinJTextField().getText()));
+			try {
+				chChronologie.setDebutFin(Integer.parseInt(chPanelCreation.getChDateDebutJTextField().getText()),Integer.parseInt(chPanelCreation.getChDateFinJTextField().getText()));
+				/**
+				 * On crée un le JComboBox pour que l'utilisateur puisse choisir l'année en
+				 * fonction de la date du début et de fin
+				 */
+				String[] anneeStrings = new String[chChronologie.getFin() - chChronologie.getDebut() + 1];
 
-			/**
-			 * On crée un le JComboBox pour que l'utilisateur puisse choisir l'année en
-			 * fonction de la date du début et de fin
-			 */
-			String[] anneeStrings = new String[chChronologie.getFin() - chChronologie.getDebut() + 1];
+				for (int i = 0; i < chChronologie.getFin() - chChronologie.getDebut() + 1; i++) {
+					anneeStrings[i] = chChronologie.getDebut() + i + "";
+				}
+				chPanelFormulaire.setAnneeComboBox(anneeStrings);
+				/** On save garde la frise */
+				LectureEcriture.ecriture(chFile, chChronologie);
 
-			for (int i = 0; i < chChronologie.getFin() - chChronologie.getDebut() + 1; i++) {
-				anneeStrings[i] = chChronologie.getDebut() + i + "";
+				/** On reset le diapo et la chronologie car il y a eu des changements. */
+				chPanelChronoDiapo.resetDiapo(chChronologie);
+
+				/** Puis on remet le nom de la frise */
+				chPanelChronoDiapo.getPanelDiapo().getChNomJLabel().setText(chChronologie.getNom());
+				/** On affiche les menus pour que l'utilisateur puisse se déplacer */
+				chPanelsFils.getFenetreMere().chMenuBar.setVisible(true);
+				/**
+				 * Puis on le déplace automatiquement sur le menu d'ajout d'un evenement pour
+				 * faciliter
+				 */
+				chPanelsFils.getCardLayout().show(chPanelsFils.getFenetreMere().getPanelsFils(), NOMSOUSMENU2[0]);
 			}
-			chPanelFormulaire.setAnneeComboBox(anneeStrings);
-			/** On save garde la frise */
-			LectureEcriture.ecriture(chFile, chChronologie);
-
-			/** On reset le diapo et la chronologie car il y a eu des changements. */
-			chPanelChronoDiapo.resetDiapo(chChronologie);
-
-			/** Puis on remet le nom de la frise */
-			chPanelChronoDiapo.getPanelDiapo().getChNomJLabel().setText(chChronologie.getNom());
-			/** On affiche les menus pour que l'utilisateur puisse se déplacer */
-			chPanelsFils.getFenetreMere().chMenuBar.setVisible(true);
-			/**
-			 * Puis on le déplace automatiquement sur le menu d'ajout d'un evenement pour
-			 * faciliter
-			 */
-			chPanelsFils.getCardLayout().show(chPanelsFils.getFenetreMere().getPanelsFils(), NOMSOUSMENU2[0]);
+			catch(ExceptionChronologie e){
+				JOptionPane.showMessageDialog(null, e.getMessage());
+			}
+			catch(NumberFormatException e){
+				JOptionPane.showMessageDialog(null, "Veuillez renseigner tous les champs!");
+			}
 		}
 
 	}
