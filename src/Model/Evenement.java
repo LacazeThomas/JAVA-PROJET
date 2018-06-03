@@ -38,13 +38,6 @@ public class Evenement implements Comparable<Evenement>, Serializable {
     public static int getNbEvt() {
         return chNbEvt;
     }
-
-    /*
-     * public static Evenement lireEvenement(){ Date a = Date.saisirUneDate();
-     * System.out.println("Nom de l'evenement: "); String b = Clavier.lireString();
-     * System.out.println("Lieu de l'evenement: "); String c = Clavier.lireString();
-     * return new Evenement(a,b,c); }
-     */
     public int compareTo(Evenement parEvt) {
         if (chDate.compareTo(parEvt.chDate) != 0)
             return (chDate.compareTo(parEvt.chDate));

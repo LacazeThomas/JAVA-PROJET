@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 public class Chronologie implements Serializable {
 	private ArrayList<Evenement> chListe = new ArrayList();
+	//HashMap qui contient tous les evenements
 	private HashMap<Integer, ArrayList<Evenement>> chMap = new HashMap<Integer, ArrayList<Evenement>>();
 	private String chNom;
 	private int chDebut;
@@ -46,10 +47,12 @@ public class Chronologie implements Serializable {
 	}
 
 	public void ajout(Evenement parEvt) {
+		//On recupe le numeros de semaine qui est l'indentificateur du chMap
 		GregorianCalendar aujoudhui = new GregorianCalendar(parEvt.getDate().getAnnee(), parEvt.getDate().getMois() - 1,
 				parEvt.getDate().getJour());
 		int numsemaine = aujoudhui.get(Calendar.WEEK_OF_YEAR);
 
+		//S'il y a deja un evenement
 		if (chMap.containsKey(numsemaine) == true) {
 			ArrayList<Evenement> list = chMap.get(numsemaine);
 			list.add(parEvt);
