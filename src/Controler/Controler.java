@@ -90,19 +90,35 @@ public class Controler implements ActionListener, Data {
 						Integer.parseInt(chPanelFormulaire.getChPoidsJComboBox().getSelectedItem().toString()));
 	
 				/** On ajout d'evement instancier avant */
-				chChronologie.ajout(testEvt);
-				/** On save garde la frise */
-				LectureEcriture.ecriture(chFile, chChronologie);
-	
-				/** On reset le diapo et la chronologie car il y a eu des changements. */
-				chPanelChronoDiapo.resetDiapo(chChronologie);
-				/** Puis on remet le nom de la frise */
-				chPanelChronoDiapo.getPanelDiapo().getChNomJLabel().setText(chChronologie.getNom());
-				/**
-				 * Puis on le déplace automatiquement sur le menu affichage pour qu'il puisse
-				 * observer ses modifications
-				 */
-				chPanelsFils.getCardLayout().show(chPanelsFils.getFenetreMere().getPanelsFils(), NOMSOUSMENU2[1]);
+				try{
+					chChronologie.ajout(testEvt);
+										
+					/** On save garde la frise */
+					LectureEcriture.ecriture(chFile, chChronologie);
+		
+					/** On reset le diapo et la chronologie car il y a eu des changements. */
+					chPanelChronoDiapo.resetDiapo(chChronologie);
+					/** Puis on remet le nom de la frise */
+					chPanelChronoDiapo.getPanelDiapo().getChNomJLabel().setText(chChronologie.getNom());
+					/**
+					 * Puis on le déplace automatiquement sur le menu affichage pour qu'il puisse
+					 * observer ses modifications
+					 */
+					chPanelsFils.getCardLayout().show(chPanelsFils.getFenetreMere().getPanelsFils(), NOMSOUSMENU2[1]);
+					
+					
+					//On reset les champs
+					chPanelFormulaire.getChTitreJTextArea().setText(" ");
+					chPanelFormulaire.getChTexteJTextArea().setText(" ");
+					chPanelFormulaire.getChImageConfirmationJLabel().setText(" ");
+					chPanelFormulaire.getChImageConfirmationVueJLabel().setIcon(new ImageIcon("shdfjk"));
+				}
+				catch(ExceptionChronologie e){
+					JOptionPane.showMessageDialog(null, e.getMessage());
+				
+				}
+
+				
 			  }
 			  catch (NullPointerException e) {
 				JOptionPane.showMessageDialog(null, "Veuillez renseigner tous les champs!");

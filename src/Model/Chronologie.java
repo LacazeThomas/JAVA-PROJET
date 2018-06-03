@@ -48,7 +48,7 @@ public class Chronologie implements Serializable {
 
 	}
 
-	public void ajout(Evenement parEvt) {
+	public void ajout(Evenement parEvt) throws ExceptionChronologie{
 		//On recupe le numeros de semaine qui est l'indentificateur du chMap
 		GregorianCalendar aujoudhui = new GregorianCalendar(parEvt.getDate().getAnnee(), parEvt.getDate().getMois() - 1,
 				parEvt.getDate().getJour());
@@ -57,6 +57,11 @@ public class Chronologie implements Serializable {
 		//S'il y a deja un evenement
 		if (chMap.containsKey(numsemaine) == true) {
 			ArrayList<Evenement> list = chMap.get(numsemaine);
+			for (Evenement s : list) {
+				if(s.getPoids() == parEvt.getPoids()){
+					throw new ExceptionChronologie("Erreur un evenement existe déjà à cette année et ce poids!");
+				}
+			}
 			list.add(parEvt);
 		} else {
 			ArrayList<Evenement> list = new ArrayList();
