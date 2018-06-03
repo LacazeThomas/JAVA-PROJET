@@ -64,8 +64,8 @@ public class Evenement implements Comparable<Evenement>, Serializable {
     public int getPoids() {
         return chPoids;
     }
-    
+
     public String getTexte() {
-    	return chTexte;
+        return chTexte;
     }
 }

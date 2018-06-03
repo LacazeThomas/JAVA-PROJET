@@ -23,14 +23,14 @@ public class JLabelDescription extends JLabel {
         while (st.hasMoreTokens()) {
             retourligne++;
             DescriptionStringTokenizer += st.nextToken() + " ";
-            if(retourligne==12){
-                DescriptionStringTokenizer+="<br/>";
+            if (retourligne == 12) {
+                DescriptionStringTokenizer += "<br/>";
                 retourligne = 0;
             }
         }
 
-
-        setText("<html><h4>" + parEvt.getDate().toString() + "</h4><h3> "+ parEvt.getTitre() +"</h3>"+  DescriptionStringTokenizer   +"</html>");
+        setText("<html><h4>" + parEvt.getDate().toString() + "</h4><h3> " + parEvt.getTitre() + "</h3>"
+                + DescriptionStringTokenizer + "</html>");
         setHorizontalAlignment(JLabel.CENTER);
         setVerticalAlignment(JLabel.CENTER);
 

@@ -23,7 +23,7 @@ public class PanelFormulaire extends JPanel implements Data {
     private JButton chAjoutJButton = new JButton("+");
     private Chronologie chChronologie = new Chronologie();
     private JTextArea chTitreJTextArea = new JTextArea("", 1, 30);
-    private JTextArea chTexteJTextArea = new JTextArea("", 6 ,30);
+    private JTextArea chTexteJTextArea = new JTextArea("", 6, 30);
     private JComboBox chDateAnneeJCombobox;
     private JComboBox chDateMoisJCombobox;
     private JComboBox chDateJoursJCombobox;
@@ -46,8 +46,6 @@ public class PanelFormulaire extends JPanel implements Data {
         JLabel formulaireAjoutJLabel = new JLabel("Formulaire Ajout:");
         formulaireAjoutJLabel.setDisplayedMnemonic(KeyEvent.VK_F);
         this.add(formulaireAjoutJLabel, contrainte);
-       
-
 
         contrainte.gridwidth = 3;
         contrainte.gridx = 4;
@@ -63,7 +61,6 @@ public class PanelFormulaire extends JPanel implements Data {
         JLabel titreEventJLabel = new JLabel("Titre:");
         titreEventJLabel.setDisplayedMnemonic(KeyEvent.VK_T);
         this.add(titreEventJLabel, contrainte);
-        
 
         contrainte.gridx = 2;
         contrainte.gridwidth = 3;
@@ -73,42 +70,37 @@ public class PanelFormulaire extends JPanel implements Data {
         this.add(chTitreJTextArea, contrainte);
         contrainte.gridwidth = 3;
         contrainte.gridheight = 1;
-        
 
         contrainte.gridx = 1;
         contrainte.gridy = 3;
         contrainte.gridwidth = 1;
         contrainte.anchor = GridBagConstraints.WEST;
-        JLabel texteEventJLabel = new JLabel("Texte:") ;
+        JLabel texteEventJLabel = new JLabel("Texte:");
         texteEventJLabel.setDisplayedMnemonic(KeyEvent.VK_E);
         this.add(texteEventJLabel, contrainte);
 
         contrainte.gridx = 2;
         contrainte.gridy = 3;
         contrainte.gridwidth = 3;
-        
-        
+
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
-
 
         JScrollPane scroll = new JScrollPane(chTexteJTextArea);
         contrainte.anchor = GridBagConstraints.EAST;
         panel.add(scroll, BorderLayout.CENTER);
-        
-        
-        
+
         texteEventJLabel.setLabelFor(chTexteJTextArea);
         this.add(panel, contrainte);
-        
+
         contrainte.gridwidth = 1;
         contrainte.gridx = 1;
         contrainte.gridy = 4;
-        JLabel AnneeJLabel =new JLabel("Date:");
+        JLabel AnneeJLabel = new JLabel("Date:");
         contrainte.anchor = GridBagConstraints.WEST;
         AnneeJLabel.setDisplayedMnemonic(KeyEvent.VK_D);
         this.add(AnneeJLabel, contrainte);
-        
+
         contrainte.gridx = 2;
         contrainte.gridwidth = 1;
         contrainte.gridy = 4;
@@ -180,7 +172,7 @@ public class PanelFormulaire extends JPanel implements Data {
 
         contrainte.gridx = 1;
         contrainte.gridy = 7;
-        contrainte.gridwidth = 1;  
+        contrainte.gridwidth = 1;
         this.add(chImageConfirmationJLabel, contrainte);
 
         contrainte.gridx = 2;

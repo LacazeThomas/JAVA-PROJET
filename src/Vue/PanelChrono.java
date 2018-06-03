@@ -14,7 +14,7 @@ public class PanelChrono extends JPanel {
 
     private static JTable chTable;
     private Chronologie chChronologie;
-    private JScrollPane js;
+    private JScrollPane chJs;
     private PanelDiapo chPanelDiapo;
 
     public PanelChrono(Chronologie parChronologie, PanelDiapo parPanelDiapo) {
@@ -28,7 +28,7 @@ public class PanelChrono extends JPanel {
         chTable.setRowHeight(50);
         chTable.setFillsViewportHeight(true);
 
-        js = new JScrollPane(chTable, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+        chJs = new JScrollPane(chTable, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         chTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         chTable.setDefaultRenderer(Object.class, new CelluleRenderer());
@@ -36,7 +36,7 @@ public class PanelChrono extends JPanel {
         chTable.getTableHeader().setResizingAllowed(false);
         chTable.setRowSelectionAllowed(false);
 
-        add(js);
+        add(chJs);
         chTable.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {

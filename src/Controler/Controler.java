@@ -1,7 +1,6 @@
 package Controler;
 
 import java.awt.Image;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -14,28 +13,27 @@ import Model.Data;
 import Model.Date;
 import Model.Evenement;
 import Model.LectureEcriture;
-import Vue.PanelChrono;
 import Vue.PanelChronoDiapo;
 import Vue.PanelCreation;
-import Vue.PanelDiapo;
 import Vue.PanelFormulaire;
 import Vue.PanelsFils;
 
 public class Controler implements ActionListener, Data {
 
-	private PanelFormulaire panelFormulaire;
+	private PanelFormulaire chPanelFormulaire;
 	private File chFile;
 	private Chronologie chChronologie;
 	private PanelCreation chPanelCreation;
 	private PanelChronoDiapo chPanelChronoDiapo;
 	private PanelsFils chPanelsFils;
 
-	public Controler(PanelsFils parPanelsFils, PanelChronoDiapo parPanelChronoDiapo, PanelFormulaire parPanelFormulaire, File parFile,
-			Chronologie parChronologie, PanelCreation parPanelCreation) {
-		panelFormulaire = parPanelFormulaire;
-		
+	public Controler(PanelsFils parPanelsFils, PanelChronoDiapo parPanelChronoDiapo,
+			PanelFormulaire parchPanelFormulaire, File parFile, Chronologie parChronologie,
+			PanelCreation parPanelCreation) {
+		chPanelFormulaire = parchPanelFormulaire;
+
 		chPanelsFils = parPanelsFils;
-		panelFormulaire.enregistreEcouteur(this);
+		chPanelFormulaire.enregistreEcouteur(this);
 		chFile = parFile;
 		chChronologie = parChronologie;
 		chPanelCreation = parPanelCreation;
@@ -46,41 +44,40 @@ public class Controler implements ActionListener, Data {
 	public void actionPerformed(ActionEvent parEvt) {
 
 		if (parEvt.getActionCommand() == "IMG") {
-			panelFormulaire.getChooser().setCurrentDirectory(new java.io.File("images/."));
-			panelFormulaire.getChooser().setDialogTitle("Choisir une image");
-			panelFormulaire.getChooser().setFileSelectionMode(JFileChooser.FILES_ONLY);
-			panelFormulaire.getChooser().setAcceptAllFileFilterUsed(false);
+			chPanelFormulaire.getChooser().setCurrentDirectory(new java.io.File("images/."));
+			chPanelFormulaire.getChooser().setDialogTitle("Choisir une image");
+			chPanelFormulaire.getChooser().setFileSelectionMode(JFileChooser.FILES_ONLY);
+			chPanelFormulaire.getChooser().setAcceptAllFileFilterUsed(false);
 
-			if (panelFormulaire.getChooser().showOpenDialog(null) == JFileChooser.APPROVE_OPTION) { // Parce que le java
-																									// c'est bien !!!
-																									// Sans ça cela ne
-																									// marche pas.
-				panelFormulaire.getChImageConfirmationJLabel()
-						.setText(panelFormulaire.getChooser().getSelectedFile().getName().toString());
-				panelFormulaire.getChImageConfirmationVueJLabel().setIcon(new ImageIcon(
-						new ImageIcon("images/" + panelFormulaire.getChooser().getSelectedFile().getName().toString())
+			if (chPanelFormulaire.getChooser().showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+				chPanelFormulaire.getChImageConfirmationJLabel()
+						.setText(chPanelFormulaire.getChooser().getSelectedFile().getName().toString());
+				chPanelFormulaire.getChImageConfirmationVueJLabel().setIcon(new ImageIcon(
+						new ImageIcon("images/" + chPanelFormulaire.getChooser().getSelectedFile().getName().toString())
 								.getImage().getScaledInstance(70, 50, Image.SCALE_DEFAULT)));
 			} else {
 			}
 		}
 		if (parEvt.getActionCommand() == "+") {
 			Date testdate = new Date();
-			testdate.setJour(Integer.parseInt(panelFormulaire.getChDateJoursJCombobox().getSelectedItem().toString()));
-			testdate.setMois(Integer.parseInt(panelFormulaire.getChDateMoisJCombobox().getSelectedItem().toString()));
-			testdate.setAnnee(Integer.parseInt(panelFormulaire.getChDateAnneeJCombobox().getSelectedItem().toString()));
+			testdate.setJour(
+					Integer.parseInt(chPanelFormulaire.getChDateJoursJCombobox().getSelectedItem().toString()));
+			testdate.setMois(Integer.parseInt(chPanelFormulaire.getChDateMoisJCombobox().getSelectedItem().toString()));
+			testdate.setAnnee(
+					Integer.parseInt(chPanelFormulaire.getChDateAnneeJCombobox().getSelectedItem().toString()));
 
-			Evenement testEvt = new Evenement(testdate, panelFormulaire.getChTitreJTextArea().getText(),
-					panelFormulaire.getChTexteJTextArea().getText(),
-					panelFormulaire.getChooser().getSelectedFile().getName().toString(),
-					Integer.parseInt(panelFormulaire.getChPoidsJComboBox().getSelectedItem().toString()));
+			Evenement testEvt = new Evenement(testdate, chPanelFormulaire.getChTitreJTextArea().getText(),
+					chPanelFormulaire.getChTexteJTextArea().getText(),
+					chPanelFormulaire.getChooser().getSelectedFile().getName().toString(),
+					Integer.parseInt(chPanelFormulaire.getChPoidsJComboBox().getSelectedItem().toString()));
 			chChronologie.ajout(testEvt);
 			LectureEcriture.ecriture(chFile, chChronologie);
 
 			chPanelChronoDiapo.resetDiapo(chChronologie);
 			chPanelChronoDiapo.getPanelDiapo().getChNomJLabel().setText(chChronologie.getNom());
-			
-			chPanelsFils.getCardLayout().show(chPanelsFils.getFenetreMere().getPanelsFils(),  NOMSOUSMENU2[1]);
-			
+
+			chPanelsFils.getCardLayout().show(chPanelsFils.getFenetreMere().getPanelsFils(), NOMSOUSMENU2[1]);
+
 		}
 
 		if (parEvt.getActionCommand() == "CreationAjout") {
@@ -93,12 +90,12 @@ public class Controler implements ActionListener, Data {
 			for (int i = 0; i < chChronologie.getFin() - chChronologie.getDebut() + 1; i++) {
 				anneeStrings[i] = chChronologie.getDebut() + i + "";
 			}
-			panelFormulaire.setAnneeComboBox(anneeStrings);
+			chPanelFormulaire.setAnneeComboBox(anneeStrings);
 			LectureEcriture.ecriture(chFile, chChronologie);
 			chPanelChronoDiapo.resetDiapo(chChronologie);
 			chPanelChronoDiapo.getPanelDiapo().getChNomJLabel().setText(chChronologie.getNom());
 			chPanelsFils.getFenetreMere().chMenuBar.setVisible(true);
-			chPanelsFils.getCardLayout().show(chPanelsFils.getFenetreMere().getPanelsFils(),  NOMSOUSMENU2[0]);
+			chPanelsFils.getCardLayout().show(chPanelsFils.getFenetreMere().getPanelsFils(), NOMSOUSMENU2[0]);
 		}
 
 	}

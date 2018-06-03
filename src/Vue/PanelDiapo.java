@@ -21,13 +21,13 @@ public class PanelDiapo extends JPanel implements Data, ActionListener {
 
 	private JLabel chNomJLabel;
 
-	private JPanel panelCentre = new JPanel();
+	private JPanel chPanelCentre = new JPanel();
 
 	private JButton chSuivantJButton = new JButton(BOUTONSDIAPO[1]);
 	private JButton chPrecedentJButton = new JButton(BOUTONSDIAPO[0]);
 	private Chronologie chChronologie;
 
-	private CardLayout gestionnaireDesCartes = new CardLayout();
+	private CardLayout chGestionnaireDesCartes = new CardLayout();
 
 	public PanelDiapo(Chronologie parChronologie) {
 
@@ -37,31 +37,29 @@ public class PanelDiapo extends JPanel implements Data, ActionListener {
 		chNomJLabel = new JLabel("", SwingConstants.CENTER);
 		add(chNomJLabel, BorderLayout.NORTH);
 
-		panelCentre.setLayout(gestionnaireDesCartes);
+		chPanelCentre.setLayout(chGestionnaireDesCartes);
 
 		ArrayList<Evenement> list = chChronologie.getArrayList();
 
 		for (Evenement s : list) {
 			JLabelDescription label = new JLabelDescription(s);
-			panelCentre.add(label, s.toString());
+			chPanelCentre.add(label, s.toString());
 		}
-		add(panelCentre, BorderLayout.CENTER);
+		add(chPanelCentre, BorderLayout.CENTER);
 		chSuivantJButton.setBorderPainted(false);
 		chSuivantJButton.setOpaque(false);
 		chSuivantJButton.setContentAreaFilled(false);
 		chSuivantJButton.setBorderPainted(false);
-		
-		
+
 		chPrecedentJButton.setBorderPainted(false);
 		chPrecedentJButton.setOpaque(false);
 		chPrecedentJButton.setContentAreaFilled(false);
 		chPrecedentJButton.setBorderPainted(false);
-		
-		
+
 		chPrecedentJButton.setFont(new Font("Arial", Font.PLAIN, 40));
 		chSuivantJButton.setFont(new Font("Arial", Font.PLAIN, 40));
-		
-	    add(chSuivantJButton, BorderLayout.EAST);
+
+		add(chSuivantJButton, BorderLayout.EAST);
 		add(chPrecedentJButton, BorderLayout.WEST);
 
 		chSuivantJButton.addActionListener(this);
@@ -73,9 +71,9 @@ public class PanelDiapo extends JPanel implements Data, ActionListener {
 
 	public void actionPerformed(ActionEvent parEvt) {
 		if (parEvt.getActionCommand() == "Suivant") {
-			gestionnaireDesCartes.next(panelCentre);
+			chGestionnaireDesCartes.next(chPanelCentre);
 			JLabelDescription card = null;
-			for (Component comp : panelCentre.getComponents()) {
+			for (Component comp : chPanelCentre.getComponents()) {
 				if (comp.isVisible() == true) {
 					card = (JLabelDescription) comp;
 				}
@@ -83,9 +81,9 @@ public class PanelDiapo extends JPanel implements Data, ActionListener {
 			PanelChrono.goToCell(card.getEvt().getDate().getAnnee() - chChronologie.getDebut());
 		}
 		if (parEvt.getActionCommand() == "Precedent") {
-			gestionnaireDesCartes.previous(panelCentre);
+			chGestionnaireDesCartes.previous(chPanelCentre);
 			JLabelDescription card = null;
-			for (Component comp : panelCentre.getComponents()) {
+			for (Component comp : chPanelCentre.getComponents()) {
 				if (comp.isVisible() == true) {
 					card = (JLabelDescription) comp;
 				}
@@ -95,11 +93,11 @@ public class PanelDiapo extends JPanel implements Data, ActionListener {
 	}
 
 	public CardLayout getCardLayout() {
-		return gestionnaireDesCartes;
+		return chGestionnaireDesCartes;
 	}
 
 	public JPanel getPanelCentre() {
-		return panelCentre;
+		return chPanelCentre;
 	}
 
 	public JLabel getChNomJLabel() {
