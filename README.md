@@ -13,7 +13,7 @@ git clone https://github.com/LacazeThomas/JAVA-PROJET.git
 ```
 
 ##Contenu
-Le git contient:
+Le git contient
     1. Le rapport
     2. La documentation Java
     3. Les images des diagrammes
