@@ -57,7 +57,7 @@ public class Date implements Comparable<Date>, Serializable {
 			chaine += "janvier";
 			break;
 		case 2:
-			chaine += "fï¿½vrier";
+			chaine += "février";
 			break;
 		case 3:
 			chaine += "mars";
@@ -75,7 +75,7 @@ public class Date implements Comparable<Date>, Serializable {
 			chaine += "juillet";
 			break;
 		case 8:
-			chaine += "aoï¿½t";
+			chaine += "août";
 			break;
 		case 9:
 			chaine += "septembre";
@@ -87,7 +87,7 @@ public class Date implements Comparable<Date>, Serializable {
 			chaine += "novembre";
 			break;
 		case 12:
-			chaine += "dï¿½cembre";
+			chaine += "décembre";
 			break;
 		}
 		chaine += " " + annee;

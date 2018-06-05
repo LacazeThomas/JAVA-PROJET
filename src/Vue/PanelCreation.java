@@ -37,7 +37,7 @@ public class PanelCreation extends JPanel {
         add(chTitreJTextField, contrainte);
         contrainte.gridx = 1;
         contrainte.gridy = 2;
-        JLabel AnneeDebutJLabel = new JLabel("AnnÃ©e de debut:");
+        JLabel AnneeDebutJLabel = new JLabel("Année de debut:");
         AnneeDebutJLabel.setDisplayedMnemonic(KeyEvent.VK_D);
         add(AnneeDebutJLabel, contrainte);
 
@@ -48,7 +48,7 @@ public class PanelCreation extends JPanel {
 
         contrainte.gridx = 1;
         contrainte.gridy = 3;
-        JLabel AnneeFinJLabel = new JLabel("AnnÃ©e de fin:");
+        JLabel AnneeFinJLabel = new JLabel("Année de fin:");
         AnneeFinJLabel.setDisplayedMnemonic(KeyEvent.VK_F);
         add(AnneeFinJLabel, contrainte);
 

@@ -36,7 +36,31 @@ public class testChrono {
 		assertTrue(testevt.getDate().compareTo(testevt2.getDate()) == 0);
 		
 		
+		// Test 3 : Ajout de deux evt et teste longueur hashmap
+		testch = new Chronologie();
+		testevt = new Evenement(new Date(),"Nom","texte","img1.png",1);
+		testch.ajout(testevt);
+		testevt2 = new Evenement(new Date(20,12,2015),"Nom","texte","img1.png",1);
+		testch.ajout(testevt2);
+		assertTrue(testch.getNb() ==2 );
 		
+		
+		// Test 4 : Test du compareto avec deux evt
+
+		testevt = new Evenement(new Date(),"Nom","texte","img1.png",1);
+		testevt2 = new Evenement(new Date(),"Nom","texte","img1.png",2);
+		assertTrue(testevt.compareTo(testevt2) == 0);
+		
+		// Test 5
+		testevt = new Evenement(new Date(),"Nom","texte","img1.png",1);
+		testevt2 = new Evenement(new Date(20,12,2015),"Nom","texte","img1.png",1);
+		assertTrue(testevt.compareTo(testevt2) == 1);
+		
+		
+		// Test 6
+		testevt = new Evenement(new Date(20,12,2015),"Nom","texte","img1.png",1);	
+		testevt2 = new Evenement(new Date(),"Nom","texte","img1.png",1);
+		assertTrue(testevt.compareTo(testevt2) == -1);
 	}
 	
 	

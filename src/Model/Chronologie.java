@@ -1,12 +1,14 @@
+/* @author Thomas LACAZE & Noe BELLEFON
+ * @version 1.0
+ * 
+ * 
+ **/
 package Model;
 
 import java.io.Serializable;
+import java.io.ObjectInputStream.GetField;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
-
-import javax.xml.ws.AsyncHandler;
 
 public class Chronologie implements Serializable {
 	private ArrayList<Evenement> chListe = new ArrayList();
@@ -52,14 +54,14 @@ public class Chronologie implements Serializable {
 
 	public void ajout(Evenement parEvt) throws ExceptionChronologie{
 		//S'il y a deja un evenement
-		//La HashMap utilise comme key l'année de l'evenement
+		//La HashMap utilise comme key l'annï¿½e de l'evenement
 		if (chMap.containsKey(parEvt.getDate().getAnnee()) == true) {
 			ArrayList<Evenement> list = chMap.get(parEvt.getDate().getAnnee());
 			
 			//On parcours l'annee en question est on regarde s'il y a deja un evenement avec ce poids
 			for (Evenement s : list) {
 				if(s.getPoids() == parEvt.getPoids()){
-					throw new ExceptionChronologie("Erreur un evenement existe déjà à cette année et ce poids!");
+					throw new ExceptionChronologie("Erreur un evenement existe dï¿½jï¿½ï¿½cette annï¿½e et ce poids!");
 				}
 			}
 			list.add(parEvt);
@@ -70,5 +72,9 @@ public class Chronologie implements Serializable {
 		}
 
 		chListe.add(parEvt);
+	}
+	
+	public int getNb() {
+		return chMap.size();
 	}
 }

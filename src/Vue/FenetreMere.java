@@ -18,6 +18,7 @@ public class FenetreMere extends JFrame implements Data {
     public FenetreMere() {
         //On nomme la fenetre
         setTitle("Frise chronologique");
+        setResizable(false);
         chMenuBar = new JMenuBar();
         this.setJMenuBar(chMenuBar);
 
@@ -26,14 +27,14 @@ public class FenetreMere extends JFrame implements Data {
 
         //On appelle le panelFils avec le fichier de sauvegarde
         chPanelsFils = new PanelsFils(this, ser);
-        //On crÃ©e le menubar
+        //On crée le menubar
         chMenuBar = new JMenuBar();
         this.setJMenuBar(chMenuBar);
 
-        //On l'aligne Ã  gauche
+        //On l'aligne à  gauche
         chMenuBar.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-        //On crÃ©e trois menu
+        //On crée trois menu
         JMenu[] menu = new JMenu[3];
 
         //On leur donne un nom
@@ -42,7 +43,7 @@ public class FenetreMere extends JFrame implements Data {
             chMenuBar.add(menu[i]);
         }
 
-        //On crÃ©e les sous menus
+        //On crée les sous menus
         for (int i = 0; i < NOMSOUSMENU1.length; i++) {
             JMenuItem menuItem = new JMenuItem(NOMSOUSMENU1[i]);
             menu[0].add(menuItem);
@@ -68,7 +69,7 @@ public class FenetreMere extends JFrame implements Data {
         setSize(1350, 700);
         setVisible(true);
 
-        //Si le fichier n'existe pas alors on enleve le menu pour facilier la comprÃ©hension
+        //Si le fichier n'existe pas alors on enleve le menu pour facilier la comprehension
         if (ser.length() == 0) {
             chMenuBar.setVisible(false);
         }
