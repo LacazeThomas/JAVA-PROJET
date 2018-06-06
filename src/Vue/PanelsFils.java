@@ -80,7 +80,6 @@ public class PanelsFils extends JPanel implements ActionListener, Data {
             chChooser.setAcceptAllFileFilterUsed(false);
 
             if (chChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-                System.out.println(chChooser.getSelectedFile().getName().toString());
                 chSer = new File("save" + File.separator + chChooser.getSelectedFile().getName().toString());
                 reset(chFenetreMere, chSer);
             } else {
