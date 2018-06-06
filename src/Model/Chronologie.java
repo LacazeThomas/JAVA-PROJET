@@ -61,7 +61,7 @@ public class Chronologie implements Serializable {
 			//On parcours l'annee en question est on regarde s'il y a deja un evenement avec ce poids
 			for (Evenement s : list) {
 				if(s.getPoids() == parEvt.getPoids()){
-					throw new ExceptionChronologie("Erreur un evenement existe dï¿½jï¿½ï¿½cette annï¿½e et ce poids!");
+					throw new ExceptionChronologie("Erreur un evenement existe déjà un événement à cette date et ce poids!");
 				}
 			}
 			list.add(parEvt);
