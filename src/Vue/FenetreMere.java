@@ -1,6 +1,7 @@
 package Vue;
 
 import java.awt.FlowLayout;
+import java.awt.event.KeyEvent;
 import java.io.File;
 
 import javax.swing.JFrame;
@@ -40,12 +41,13 @@ public class FenetreMere extends JFrame implements Data {
         //On leur donne un nom
         for (int i = 0; i < NOMMENU.length; i++) {
             menu[i] = new JMenu(NOMMENU[i]);
+            menu[i].setMnemonic(NOMMENU[i].charAt(0));
             chMenuBar.add(menu[i]);
         }
 
         //On crée les sous menus
         for (int i = 0; i < NOMSOUSMENU1.length; i++) {
-            JMenuItem menuItem = new JMenuItem(NOMSOUSMENU1[i]);
+            JMenuItem menuItem = new JMenuItem(NOMSOUSMENU1[i], KeyEvent.VK_T);
             menu[0].add(menuItem);
             menuItem.addActionListener(chPanelsFils);
             menuItem.setActionCommand(NOMSOUSMENU1[i]);

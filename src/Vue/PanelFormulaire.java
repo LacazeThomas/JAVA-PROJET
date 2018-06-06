@@ -44,7 +44,7 @@ public class PanelFormulaire extends JPanel implements Data {
         contrainte.insets = new Insets(10, 0, 0, 0);
         contrainte.anchor = GridBagConstraints.WEST;
         JLabel formulaireAjoutJLabel = new JLabel("Formulaire Ajout:");
-        formulaireAjoutJLabel.setDisplayedMnemonic(KeyEvent.VK_F);
+        formulaireAjoutJLabel.setDisplayedMnemonic(KeyEvent.VK_O);
         this.add(formulaireAjoutJLabel, contrainte);
 
         contrainte.gridwidth = 3;
@@ -91,6 +91,7 @@ public class PanelFormulaire extends JPanel implements Data {
         panel.add(scroll, BorderLayout.CENTER);
 
         texteEventJLabel.setLabelFor(chTexteJTextArea);
+        chTexteJTextArea.setLineWrap(true);
         this.add(panel, contrainte);
 
         contrainte.gridwidth = 1;
@@ -100,6 +101,7 @@ public class PanelFormulaire extends JPanel implements Data {
         contrainte.anchor = GridBagConstraints.WEST;
         AnneeJLabel.setDisplayedMnemonic(KeyEvent.VK_D);
         this.add(AnneeJLabel, contrainte);
+
 
         contrainte.gridx = 2;
         contrainte.gridwidth = 1;
@@ -117,7 +119,7 @@ public class PanelFormulaire extends JPanel implements Data {
         }
 
         AnneeJLabel.setLabelFor(chDateAnneeJCombobox);
-        contrainte.anchor = GridBagConstraints.WEST;
+        contrainte.anchor = GridBagConstraints.EAST;
         this.add(chDateAnneeJCombobox, contrainte);
 
         String[] moisStrings = new String[12];
@@ -128,7 +130,6 @@ public class PanelFormulaire extends JPanel implements Data {
         contrainte.gridx = 3;
         contrainte.gridy = 4;
         contrainte.gridwidth = 1;
-        contrainte.anchor = GridBagConstraints.WEST;
         this.add(chDateMoisJCombobox, contrainte);
 
         String[] joursStrings = new String[31];
@@ -139,7 +140,6 @@ public class PanelFormulaire extends JPanel implements Data {
         contrainte.gridwidth = 1;
         contrainte.gridx = 4;
         contrainte.gridy = 4;
-        contrainte.anchor = GridBagConstraints.EAST;
         this.add(chDateJoursJCombobox, contrainte);
 
         contrainte.gridx = 1;
