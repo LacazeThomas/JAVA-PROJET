@@ -35,6 +35,7 @@ public class PanelDiapo extends JPanel implements Data, ActionListener {
 
 		setLayout(new BorderLayout());
 		chNomJLabel = new JLabel("", SwingConstants.CENTER);
+		chNomJLabel.setFont(new Font("Arial", Font.PLAIN, 20));
 		add(chNomJLabel, BorderLayout.NORTH);
 
 		chPanelCentre.setLayout(chGestionnaireDesCartes);
